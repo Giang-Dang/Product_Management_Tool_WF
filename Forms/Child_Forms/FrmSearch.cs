@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Product_Manage_Tool_WF
+namespace Product_Manage_Tool_WF.Forms.Child_Forms
 {
-    public partial class Form1 : Form
+    public partial class FrmSearch : Form
     {
-        public Form1()
+        public FrmSearch()
         {
             InitializeComponent();
         }
