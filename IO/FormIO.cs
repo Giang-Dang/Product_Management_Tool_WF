@@ -76,14 +76,14 @@ namespace Product_Manage_Tool_WF.IO
             }
             return false;
         }
-        public static void EnableInputBox(TableLayoutPanel inputTableLayoutPanel)
+        public static void EnableInputBoxes(TableLayoutPanel inputTableLayoutPanel)
         {
             foreach (Control control in inputTableLayoutPanel.Controls)
             {
                 control.Enabled = true;
             }
         }
-        public static void DisableInputBox(TableLayoutPanel inputTableLayoutPanel)
+        public static void DisableInputBoxes(TableLayoutPanel inputTableLayoutPanel)
         {
             foreach (Control control in inputTableLayoutPanel.Controls)
             {
@@ -98,6 +98,18 @@ namespace Product_Manage_Tool_WF.IO
             }
         }
 
+        public static void ClearInputBoxes(TableLayoutPanel inputTableLayoutPanel)
+        {
+            foreach (Control control in inputTableLayoutPanel.Controls)
+            {
+                if (control is Label)
+                { }
+                else
+                {
+                    control.Text = string.Empty;
+                }
+            }
+        }
         public static void EnableControls(Panel panel)
         {
             foreach (Control control in panel.Controls)
@@ -116,7 +128,32 @@ namespace Product_Manage_Tool_WF.IO
 
         public static void UpdateProductListToTable(ListProduct productList, DataGridView dataGridView)
         {
-
+            dataGridView.Rows.Clear();
+            for (int i = 0; i < productList.CurrentLength; i++)
+            {
+                dataGridView.Rows.Add(
+                    productList.List[i].ProductID, 
+                    productList.List[i].ProductName, 
+                    productList.List[i].ExpiryDate, 
+                    productList.List[i].ProductionCompany, 
+                    productList.List[i].ManufactureYear, 
+                    productList.List[i].ProductType
+                    );
+            }
         }
+
+        public static void UpdateFromTypeListToComboBox(ListType typeList, ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            if(typeList.CurrentLength != 0)
+            {
+                for (int i = 0; i < typeList.CurrentLength; i++)
+                {
+                    comboBox.Items.Add(typeList.List[i]);
+                }
+            }
+        }
+
+
     }
 }

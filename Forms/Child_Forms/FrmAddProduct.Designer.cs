@@ -158,6 +158,7 @@
             this.lblProductID.TabIndex = 0;
             this.lblProductID.Text = "Mã Hàng:";
             this.lblProductID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblProductID.Click += new System.EventHandler(this.lblProductID_Click);
             // 
             // lblProductionCompany
             // 
@@ -181,6 +182,7 @@
             this.txbProductID.Size = new System.Drawing.Size(236, 26);
             this.txbProductID.TabIndex = 6;
             this.txbProductID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbProductID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbProductID_KeyDown);
             // 
             // txbProductName
             // 
@@ -191,6 +193,7 @@
             this.txbProductName.Size = new System.Drawing.Size(236, 26);
             this.txbProductName.TabIndex = 7;
             this.txbProductName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbProductName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbProductName_KeyDown);
             // 
             // txbProductionCompany
             // 
@@ -201,6 +204,7 @@
             this.txbProductionCompany.Size = new System.Drawing.Size(237, 26);
             this.txbProductionCompany.TabIndex = 8;
             this.txbProductionCompany.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbProductionCompany.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbProductionCompany_KeyDown);
             // 
             // mtbManufactureYear
             // 
@@ -213,6 +217,7 @@
             this.mtbManufactureYear.TabIndex = 9;
             this.mtbManufactureYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mtbManufactureYear.ValidatingType = typeof(int);
+            this.mtbManufactureYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtbManufactureYear_KeyDown);
             // 
             // mtbExpiryDate
             // 
@@ -225,6 +230,7 @@
             this.mtbExpiryDate.TabIndex = 10;
             this.mtbExpiryDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mtbExpiryDate.ValidatingType = typeof(System.DateTime);
+            this.mtbExpiryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtbExpiryDate_KeyDown);
             // 
             // cbbProductType
             // 
@@ -236,6 +242,8 @@
             this.cbbProductType.Name = "cbbProductType";
             this.cbbProductType.Size = new System.Drawing.Size(237, 28);
             this.cbbProductType.TabIndex = 11;
+            this.cbbProductType.Click += new System.EventHandler(this.cbbProductType_Click);
+            this.cbbProductType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbbProductType_KeyDown);
             // 
             // pnlPrimaryControls
             // 
@@ -262,6 +270,7 @@
             this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "XÓA";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -276,6 +285,7 @@
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "SỬA";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAddNew
             // 
@@ -316,6 +326,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "HỦY";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -330,6 +341,8 @@
             this.btnConfirm.TabIndex = 3;
             this.btnConfirm.Text = "XÁC NHẬN";
             this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.btnConfirm.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnConfirm_KeyDown);
             // 
             // dgwProduct
             // 
@@ -350,6 +363,8 @@
             this.dgwProduct.Name = "dgwProduct";
             this.dgwProduct.Size = new System.Drawing.Size(730, 292);
             this.dgwProduct.TabIndex = 3;
+            this.dgwProduct.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwProduct_CellMouseUp);
+            this.dgwProduct.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgwProduct_RowsAdded);
             // 
             // ClnProductID
             // 
