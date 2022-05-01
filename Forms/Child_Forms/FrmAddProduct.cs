@@ -110,8 +110,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             string newType = product.ProductType;
             if (newType != oldType)
             {
-                Product[] ListProductsHaveEdittingType = Global.ProductList.FindProductsHaveID(oldType);
-                if (ListProductsHaveEdittingType.Length == 1)
+                ListProduct ListProductsBelongEdittingType = Global.ProductList.FindProductsHaveID(oldType);
+                if (ListProductsBelongEdittingType.CurrentLength == 1)
                 {
                     Global.TypeList.Edit(oldType, newType);
                 }
@@ -237,8 +237,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             }
             else
             {
-                DialogResult confirmDeleteRow = MessageBox.Show(this, "Bạn có chắc chắn muốn xóa dữ liệu của MÃ HÀNG " + dgwProduct.Rows[TableCurrentRowIndex].Cells[0].Value.ToString(), "Xác nhận xóa dữ liệu", MessageBoxButtons.YesNo);
-                if (confirmDeleteRow == DialogResult.Yes)
+                DialogResult confirmDeletingRow = MessageBox.Show(this, "Bạn có chắc chắn muốn xóa dữ liệu của MÃ HÀNG " + dgwProduct.Rows[TableCurrentRowIndex].Cells[0].Value.ToString(), "Xác nhận xóa dữ liệu", MessageBoxButtons.YesNo);
+                if (confirmDeletingRow == DialogResult.Yes)
                 {
                     //remove type in both typelist
                     Global.TypeList.Remove(Global.ProductList.List[TableCurrentRowIndex].ProductType);

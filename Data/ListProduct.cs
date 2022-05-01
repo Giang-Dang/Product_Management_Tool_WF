@@ -111,9 +111,9 @@ namespace Product_Manage_Tool_WF.Data
             }
         }
 
-        public Product[] FindProductsHaveID(string ID)
+        public ListProduct FindProductsHaveID(string ID)
         {
-            Product[] tempResultList = new Product[CurrentLength];
+            Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
             int count = 0;
             for (int i = 0 ; i < CurrentLength; i++)
             {
@@ -123,13 +123,12 @@ namespace Product_Manage_Tool_WF.Data
                     count++;
                 }
             }
-            Product[] res = Product.ShortenProductArray(tempResultList);
-            return res;
+            return new ListProduct(tempResultList, count);
         }
 
-        public Product[] FindAllProductInType(string type)
+        public ListProduct FindAllProductInType(string type)
         {
-            Product[] tempResultList = new Product[CurrentLength];
+            Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
             int count = 0;
             for (int i = 0; i < CurrentLength; i++)
             {
@@ -139,8 +138,7 @@ namespace Product_Manage_Tool_WF.Data
                     count++;
                 }
             }
-            Product[] res = Product.ShortenProductArray(tempResultList);
-            return res;
+            return new ListProduct(tempResultList, count);
         }
 
         

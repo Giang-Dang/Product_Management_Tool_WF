@@ -75,6 +75,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "HỦY";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
@@ -89,6 +90,7 @@
             this.btnConfirm.TabIndex = 3;
             this.btnConfirm.Text = "XÁC NHẬN";
             this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // pnlPrimaryControls
             // 
@@ -115,6 +117,7 @@
             this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "XÓA";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -129,6 +132,7 @@
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "SỬA";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAddNew
             // 
@@ -143,6 +147,7 @@
             this.btnAddNew.TabIndex = 0;
             this.btnAddNew.Text = "THÊM MỚI";
             this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // tlpInput
             // 
@@ -171,6 +176,8 @@
             this.cbbProductType.Name = "cbbProductType";
             this.cbbProductType.Size = new System.Drawing.Size(622, 28);
             this.cbbProductType.TabIndex = 12;
+            this.cbbProductType.SelectedIndexChanged += new System.EventHandler(this.cbbProductType_SelectedIndexChanged);
+            this.cbbProductType.Click += new System.EventHandler(this.cbbProductType_Click);
             // 
             // lblProductType
             // 
@@ -253,6 +260,7 @@
             this.Controls.Add(this.pnlPrimaryControls);
             this.Name = "FrmAddProductType";
             this.Text = "FrmAddProductType";
+            this.Load += new System.EventHandler(this.FrmAddProductType_Load);
             this.pnlSecondaryControls.ResumeLayout(false);
             this.pnlPrimaryControls.ResumeLayout(false);
             this.tlpInput.ResumeLayout(false);
