@@ -33,10 +33,10 @@
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblInfo1 = new System.Windows.Forms.Label();
             this.tlpInput = new System.Windows.Forms.TableLayoutPanel();
-            this.lblProductID = new System.Windows.Forms.Label();
-            this.txbProductID = new System.Windows.Forms.TextBox();
-            this.lblProductType = new System.Windows.Forms.Label();
             this.cbbProductType = new System.Windows.Forms.ComboBox();
+            this.lblProductType = new System.Windows.Forms.Label();
+            this.txbProductID = new System.Windows.Forms.TextBox();
+            this.lblProductID = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
             this.dgwProduct = new System.Windows.Forms.DataGridView();
             this.ClnProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,32 +118,20 @@
             this.tlpInput.Name = "tlpInput";
             this.tlpInput.RowCount = 1;
             this.tlpInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tlpInput.Size = new System.Drawing.Size(732, 35);
             this.tlpInput.TabIndex = 6;
             // 
-            // lblProductID
+            // cbbProductType
             // 
-            this.lblProductID.AutoSize = true;
-            this.lblProductID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductID.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblProductID.Location = new System.Drawing.Point(3, 0);
-            this.lblProductID.Name = "lblProductID";
-            this.lblProductID.Size = new System.Drawing.Size(89, 35);
-            this.lblProductID.TabIndex = 1;
-            this.lblProductID.Text = "Mã Hàng:";
-            this.lblProductID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txbProductID
-            // 
-            this.txbProductID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txbProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbProductID.Location = new System.Drawing.Point(98, 3);
-            this.txbProductID.Name = "txbProductID";
-            this.txbProductID.Size = new System.Drawing.Size(237, 26);
-            this.txbProductID.TabIndex = 7;
-            this.txbProductID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.cbbProductType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbProductType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbbProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbProductType.FormattingEnabled = true;
+            this.cbbProductType.Location = new System.Drawing.Point(491, 3);
+            this.cbbProductType.Name = "cbbProductType";
+            this.cbbProductType.Size = new System.Drawing.Size(238, 28);
+            this.cbbProductType.TabIndex = 12;
             // 
             // lblProductType
             // 
@@ -158,16 +146,28 @@
             this.lblProductType.Text = "Loại Hàng:";
             this.lblProductType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbbProductType
+            // txbProductID
             // 
-            this.cbbProductType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbbProductType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbbProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbProductType.FormattingEnabled = true;
-            this.cbbProductType.Location = new System.Drawing.Point(491, 3);
-            this.cbbProductType.Name = "cbbProductType";
-            this.cbbProductType.Size = new System.Drawing.Size(238, 28);
-            this.cbbProductType.TabIndex = 12;
+            this.txbProductID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txbProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbProductID.Location = new System.Drawing.Point(98, 3);
+            this.txbProductID.Name = "txbProductID";
+            this.txbProductID.Size = new System.Drawing.Size(237, 26);
+            this.txbProductID.TabIndex = 7;
+            this.txbProductID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lblProductID
+            // 
+            this.lblProductID.AutoSize = true;
+            this.lblProductID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductID.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblProductID.Location = new System.Drawing.Point(3, 0);
+            this.lblProductID.Name = "lblProductID";
+            this.lblProductID.Size = new System.Drawing.Size(89, 35);
+            this.lblProductID.TabIndex = 1;
+            this.lblProductID.Text = "Mã Hàng:";
+            this.lblProductID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblResult
             // 

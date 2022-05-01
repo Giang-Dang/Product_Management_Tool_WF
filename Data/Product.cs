@@ -6,23 +6,47 @@ using System.Threading.Tasks;
 
 namespace Product_Manage_Tool_WF.Data
 {
-    public class Product
+    public struct Product
     {
-        public string productID;
-        public string productName;
-        public string expiryDate;
-        public string productCompany;
-        public string productType;
-        public int manufactureYear;
+        public string ProductID;
+        public string ProductName;
+        public string ExpiryDate;
+        public string ProductCompany;
+        public string ProductType;
+        public int ManufactureYear;
 
         public Product(string _productID, string _productName, string _expiryDate, string _productCompany, int _manufactureYear, string _productType)
         {
-            productID = _productID;
-            productName = _productName;
-            expiryDate = _expiryDate;
-            productCompany = _productCompany;
-            productType = _productType;
-            manufactureYear = _manufactureYear;
+            ProductID = _productID;
+            ProductName = _productName;
+            ExpiryDate = _expiryDate;
+            ProductCompany = _productCompany;
+            ProductType = _productType;
+            ManufactureYear = _manufactureYear;
+        }
+
+        public static Product[] ShortenProductArray(Product[] array)
+        {
+            int newArrayLength = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Equals(default(Product)))
+                {
+                    break;
+                }
+                else
+                {
+                    newArrayLength = i + 1;
+                }
+            }
+
+            Product[] res = new Product[newArrayLength];
+            for (int i = 0; i < newArrayLength; i++)
+            {
+                res[i] = array[i];
+            }
+
+            return res;
         }
     }
 }

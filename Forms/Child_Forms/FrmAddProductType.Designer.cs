@@ -36,6 +36,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.tlpInput = new System.Windows.Forms.TableLayoutPanel();
+            this.cbbProductType = new System.Windows.Forms.ComboBox();
+            this.lblProductType = new System.Windows.Forms.Label();
             this.dgwProduct = new System.Windows.Forms.DataGridView();
             this.ClnProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClnProductname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,8 +45,6 @@
             this.ClnProductionCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClnManufactureYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClnProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblProductType = new System.Windows.Forms.Label();
-            this.cbbProductType = new System.Windows.Forms.ComboBox();
             this.pnlSecondaryControls.SuspendLayout();
             this.pnlPrimaryControls.SuspendLayout();
             this.tlpInput.SuspendLayout();
@@ -160,6 +160,31 @@
             this.tlpInput.Size = new System.Drawing.Size(728, 32);
             this.tlpInput.TabIndex = 5;
             // 
+            // cbbProductType
+            // 
+            this.cbbProductType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbProductType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbbProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbProductType.FormattingEnabled = true;
+            this.cbbProductType.Location = new System.Drawing.Point(103, 3);
+            this.cbbProductType.Name = "cbbProductType";
+            this.cbbProductType.Size = new System.Drawing.Size(622, 28);
+            this.cbbProductType.TabIndex = 12;
+            // 
+            // lblProductType
+            // 
+            this.lblProductType.AutoSize = true;
+            this.lblProductType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductType.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblProductType.Location = new System.Drawing.Point(3, 0);
+            this.lblProductType.Name = "lblProductType";
+            this.lblProductType.Size = new System.Drawing.Size(94, 32);
+            this.lblProductType.TabIndex = 6;
+            this.lblProductType.Text = "Loại Hàng:";
+            this.lblProductType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // dgwProduct
             // 
             this.dgwProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -215,31 +240,6 @@
             this.ClnProductType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnProductType.HeaderText = "Loại Hàng";
             this.ClnProductType.Name = "ClnProductType";
-            // 
-            // lblProductType
-            // 
-            this.lblProductType.AutoSize = true;
-            this.lblProductType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductType.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblProductType.Location = new System.Drawing.Point(3, 0);
-            this.lblProductType.Name = "lblProductType";
-            this.lblProductType.Size = new System.Drawing.Size(94, 32);
-            this.lblProductType.TabIndex = 6;
-            this.lblProductType.Text = "Loại Hàng:";
-            this.lblProductType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbbProductType
-            // 
-            this.cbbProductType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbProductType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbbProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbProductType.FormattingEnabled = true;
-            this.cbbProductType.Location = new System.Drawing.Point(103, 3);
-            this.cbbProductType.Name = "cbbProductType";
-            this.cbbProductType.Size = new System.Drawing.Size(622, 28);
-            this.cbbProductType.TabIndex = 12;
             // 
             // FrmAddProductType
             // 

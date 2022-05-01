@@ -29,8 +29,25 @@
         private void InitializeComponent()
         {
             this.tlpInput = new System.Windows.Forms.TableLayoutPanel();
+            this.lblProductName = new System.Windows.Forms.Label();
+            this.lblExpiryDate = new System.Windows.Forms.Label();
+            this.lblManufactureYear = new System.Windows.Forms.Label();
+            this.lblProductType = new System.Windows.Forms.Label();
+            this.lblProductID = new System.Windows.Forms.Label();
+            this.lblProductionCompany = new System.Windows.Forms.Label();
+            this.txbProductID = new System.Windows.Forms.TextBox();
+            this.txbProductName = new System.Windows.Forms.TextBox();
+            this.txbProductionCompany = new System.Windows.Forms.TextBox();
+            this.mtbManufactureYear = new System.Windows.Forms.MaskedTextBox();
+            this.mtbExpiryDate = new System.Windows.Forms.MaskedTextBox();
+            this.cbbProductType = new System.Windows.Forms.ComboBox();
             this.pnlPrimaryControls = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
             this.pnlSecondaryControls = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.dgwProduct = new System.Windows.Forms.DataGridView();
             this.ClnProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClnProductname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,23 +55,6 @@
             this.ClnProductionCompany = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClnManufactureYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClnProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblProductID = new System.Windows.Forms.Label();
-            this.lblProductName = new System.Windows.Forms.Label();
-            this.lblExpiryDate = new System.Windows.Forms.Label();
-            this.lblProductionCompany = new System.Windows.Forms.Label();
-            this.lblManufactureYear = new System.Windows.Forms.Label();
-            this.lblProductType = new System.Windows.Forms.Label();
-            this.txbProductID = new System.Windows.Forms.TextBox();
-            this.txbProductName = new System.Windows.Forms.TextBox();
-            this.txbProductionCompany = new System.Windows.Forms.TextBox();
-            this.mtbManufactureYear = new System.Windows.Forms.MaskedTextBox();
-            this.mtbExpiryDate = new System.Windows.Forms.MaskedTextBox();
-            this.cbbProductType = new System.Windows.Forms.ComboBox();
-            this.btnAddNew = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnConfirm = new System.Windows.Forms.Button();
             this.tlpInput.SuspendLayout();
             this.pnlPrimaryControls.SuspendLayout();
             this.pnlSecondaryControls.SuspendLayout();
@@ -93,98 +93,6 @@
             this.tlpInput.Size = new System.Drawing.Size(730, 120);
             this.tlpInput.TabIndex = 0;
             // 
-            // pnlPrimaryControls
-            // 
-            this.pnlPrimaryControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPrimaryControls.AutoSize = true;
-            this.pnlPrimaryControls.Controls.Add(this.btnRemove);
-            this.pnlPrimaryControls.Controls.Add(this.btnEdit);
-            this.pnlPrimaryControls.Controls.Add(this.btnAddNew);
-            this.pnlPrimaryControls.Location = new System.Drawing.Point(16, 134);
-            this.pnlPrimaryControls.Name = "pnlPrimaryControls";
-            this.pnlPrimaryControls.Size = new System.Drawing.Size(730, 44);
-            this.pnlPrimaryControls.TabIndex = 1;
-            // 
-            // pnlSecondaryControls
-            // 
-            this.pnlSecondaryControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlSecondaryControls.AutoSize = true;
-            this.pnlSecondaryControls.Controls.Add(this.btnCancel);
-            this.pnlSecondaryControls.Controls.Add(this.btnConfirm);
-            this.pnlSecondaryControls.Location = new System.Drawing.Point(16, 180);
-            this.pnlSecondaryControls.Name = "pnlSecondaryControls";
-            this.pnlSecondaryControls.Size = new System.Drawing.Size(730, 45);
-            this.pnlSecondaryControls.TabIndex = 2;
-            // 
-            // dgwProduct
-            // 
-            this.dgwProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgwProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgwProduct.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
-            this.dgwProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClnProductID,
-            this.ClnProductname,
-            this.ClnExpiryDate,
-            this.ClnProductionCompany,
-            this.ClnManufactureYear,
-            this.ClnProductType});
-            this.dgwProduct.Location = new System.Drawing.Point(16, 227);
-            this.dgwProduct.Name = "dgwProduct";
-            this.dgwProduct.Size = new System.Drawing.Size(730, 292);
-            this.dgwProduct.TabIndex = 3;
-            // 
-            // ClnProductID
-            // 
-            this.ClnProductID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClnProductID.HeaderText = "Mã";
-            this.ClnProductID.Name = "ClnProductID";
-            // 
-            // ClnProductname
-            // 
-            this.ClnProductname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClnProductname.HeaderText = "Tên Hàng";
-            this.ClnProductname.Name = "ClnProductname";
-            // 
-            // ClnExpiryDate
-            // 
-            this.ClnExpiryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClnExpiryDate.HeaderText = "Hạn Dùng";
-            this.ClnExpiryDate.Name = "ClnExpiryDate";
-            // 
-            // ClnProductionCompany
-            // 
-            this.ClnProductionCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClnProductionCompany.HeaderText = "Công Ty Sản Xuất";
-            this.ClnProductionCompany.Name = "ClnProductionCompany";
-            // 
-            // ClnManufactureYear
-            // 
-            this.ClnManufactureYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClnManufactureYear.HeaderText = "Năm Sản Xuất";
-            this.ClnManufactureYear.Name = "ClnManufactureYear";
-            // 
-            // ClnProductType
-            // 
-            this.ClnProductType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClnProductType.HeaderText = "Loại Hàng";
-            this.ClnProductType.Name = "ClnProductType";
-            // 
-            // lblProductID
-            // 
-            this.lblProductID.AutoSize = true;
-            this.lblProductID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductID.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblProductID.Location = new System.Drawing.Point(3, 2);
-            this.lblProductID.Name = "lblProductID";
-            this.lblProductID.Size = new System.Drawing.Size(89, 38);
-            this.lblProductID.TabIndex = 0;
-            this.lblProductID.Text = "Mã Hàng:";
-            this.lblProductID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // lblProductName
             // 
             this.lblProductName.AutoSize = true;
@@ -202,6 +110,7 @@
             // 
             this.lblExpiryDate.AutoSize = true;
             this.lblExpiryDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblExpiryDate.Enabled = false;
             this.lblExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpiryDate.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblExpiryDate.Location = new System.Drawing.Point(3, 78);
@@ -210,19 +119,6 @@
             this.lblExpiryDate.TabIndex = 2;
             this.lblExpiryDate.Text = "Hạn Dùng";
             this.lblExpiryDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblProductionCompany
-            // 
-            this.lblProductionCompany.AutoSize = true;
-            this.lblProductionCompany.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblProductionCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductionCompany.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblProductionCompany.Location = new System.Drawing.Point(340, 2);
-            this.lblProductionCompany.Name = "lblProductionCompany";
-            this.lblProductionCompany.Size = new System.Drawing.Size(144, 38);
-            this.lblProductionCompany.TabIndex = 3;
-            this.lblProductionCompany.Text = "Công Ty Sản Xuất:";
-            this.lblProductionCompany.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblManufactureYear
             // 
@@ -249,6 +145,32 @@
             this.lblProductType.TabIndex = 5;
             this.lblProductType.Text = "Loại Hàng:";
             this.lblProductType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblProductID
+            // 
+            this.lblProductID.AutoSize = true;
+            this.lblProductID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductID.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblProductID.Location = new System.Drawing.Point(3, 2);
+            this.lblProductID.Name = "lblProductID";
+            this.lblProductID.Size = new System.Drawing.Size(89, 38);
+            this.lblProductID.TabIndex = 0;
+            this.lblProductID.Text = "Mã Hàng:";
+            this.lblProductID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblProductionCompany
+            // 
+            this.lblProductionCompany.AutoSize = true;
+            this.lblProductionCompany.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblProductionCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductionCompany.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblProductionCompany.Location = new System.Drawing.Point(340, 2);
+            this.lblProductionCompany.Name = "lblProductionCompany";
+            this.lblProductionCompany.Size = new System.Drawing.Size(144, 38);
+            this.lblProductionCompany.TabIndex = 3;
+            this.lblProductionCompany.Text = "Công Ty Sản Xuất:";
+            this.lblProductionCompany.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txbProductID
             // 
@@ -315,19 +237,31 @@
             this.cbbProductType.Size = new System.Drawing.Size(237, 28);
             this.cbbProductType.TabIndex = 11;
             // 
-            // btnAddNew
+            // pnlPrimaryControls
             // 
-            this.btnAddNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
-            this.btnAddNew.FlatAppearance.BorderSize = 0;
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAddNew.Location = new System.Drawing.Point(380, 1);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(112, 38);
-            this.btnAddNew.TabIndex = 0;
-            this.btnAddNew.Text = "THÊM MỚI";
-            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.pnlPrimaryControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlPrimaryControls.AutoSize = true;
+            this.pnlPrimaryControls.Controls.Add(this.btnRemove);
+            this.pnlPrimaryControls.Controls.Add(this.btnEdit);
+            this.pnlPrimaryControls.Controls.Add(this.btnAddNew);
+            this.pnlPrimaryControls.Location = new System.Drawing.Point(16, 134);
+            this.pnlPrimaryControls.Name = "pnlPrimaryControls";
+            this.pnlPrimaryControls.Size = new System.Drawing.Size(730, 44);
+            this.pnlPrimaryControls.TabIndex = 1;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
+            this.btnRemove.FlatAppearance.BorderSize = 0;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRemove.Location = new System.Drawing.Point(615, 1);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(112, 38);
+            this.btnRemove.TabIndex = 2;
+            this.btnRemove.Text = "XÓA";
+            this.btnRemove.UseVisualStyleBackColor = false;
             // 
             // btnEdit
             // 
@@ -343,19 +277,31 @@
             this.btnEdit.Text = "SỬA";
             this.btnEdit.UseVisualStyleBackColor = false;
             // 
-            // btnRemove
+            // btnAddNew
             // 
-            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRemove.Location = new System.Drawing.Point(615, 1);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(112, 38);
-            this.btnRemove.TabIndex = 2;
-            this.btnRemove.Text = "XÓA";
-            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnAddNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
+            this.btnAddNew.FlatAppearance.BorderSize = 0;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNew.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAddNew.Location = new System.Drawing.Point(380, 1);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(112, 38);
+            this.btnAddNew.TabIndex = 0;
+            this.btnAddNew.Text = "THÊM MỚI";
+            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // pnlSecondaryControls
+            // 
+            this.pnlSecondaryControls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlSecondaryControls.AutoSize = true;
+            this.pnlSecondaryControls.Controls.Add(this.btnCancel);
+            this.pnlSecondaryControls.Controls.Add(this.btnConfirm);
+            this.pnlSecondaryControls.Location = new System.Drawing.Point(16, 180);
+            this.pnlSecondaryControls.Name = "pnlSecondaryControls";
+            this.pnlSecondaryControls.Size = new System.Drawing.Size(730, 45);
+            this.pnlSecondaryControls.TabIndex = 2;
             // 
             // btnCancel
             // 
@@ -385,6 +331,62 @@
             this.btnConfirm.Text = "XÁC NHẬN";
             this.btnConfirm.UseVisualStyleBackColor = false;
             // 
+            // dgwProduct
+            // 
+            this.dgwProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgwProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgwProduct.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(52)))), ((int)(((byte)(77)))));
+            this.dgwProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClnProductID,
+            this.ClnProductname,
+            this.ClnExpiryDate,
+            this.ClnProductionCompany,
+            this.ClnManufactureYear,
+            this.ClnProductType});
+            this.dgwProduct.Location = new System.Drawing.Point(16, 227);
+            this.dgwProduct.Name = "dgwProduct";
+            this.dgwProduct.Size = new System.Drawing.Size(730, 292);
+            this.dgwProduct.TabIndex = 3;
+            // 
+            // ClnProductID
+            // 
+            this.ClnProductID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClnProductID.HeaderText = "Mã";
+            this.ClnProductID.Name = "ClnProductID";
+            // 
+            // ClnProductname
+            // 
+            this.ClnProductname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClnProductname.HeaderText = "Tên Hàng";
+            this.ClnProductname.Name = "ClnProductname";
+            // 
+            // ClnExpiryDate
+            // 
+            this.ClnExpiryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClnExpiryDate.HeaderText = "Hạn Dùng";
+            this.ClnExpiryDate.Name = "ClnExpiryDate";
+            // 
+            // ClnProductionCompany
+            // 
+            this.ClnProductionCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClnProductionCompany.HeaderText = "Công Ty Sản Xuất";
+            this.ClnProductionCompany.Name = "ClnProductionCompany";
+            // 
+            // ClnManufactureYear
+            // 
+            this.ClnManufactureYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClnManufactureYear.HeaderText = "Năm Sản Xuất";
+            this.ClnManufactureYear.Name = "ClnManufactureYear";
+            // 
+            // ClnProductType
+            // 
+            this.ClnProductType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClnProductType.HeaderText = "Loại Hàng";
+            this.ClnProductType.Name = "ClnProductType";
+            // 
             // FrmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +399,7 @@
             this.Controls.Add(this.tlpInput);
             this.Name = "FrmAddProduct";
             this.Text = "FrmAddProduct";
+            this.Load += new System.EventHandler(this.FrmAddProduct_Load);
             this.tlpInput.ResumeLayout(false);
             this.tlpInput.PerformLayout();
             this.pnlPrimaryControls.ResumeLayout(false);
