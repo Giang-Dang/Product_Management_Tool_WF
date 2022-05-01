@@ -154,6 +154,23 @@ namespace Product_Manage_Tool_WF.IO
             }
         }
 
-
+        public static bool IsValidDate(string input)
+        {
+            string[] inputArray = input.Split('/');
+            int Date = Int32.Parse(inputArray[0]);
+            int Month = Int32.Parse(inputArray[1]);
+            int Year = Int32.Parse(inputArray[2]);
+            if (Month > 12 || Month < 1)
+            {
+                return false;
+            }
+            int[] daysInMonthArray = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            int daysInMonth = daysInMonthArray[Month] + Convert.ToInt32(Month == 2 && ((Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0)) );
+            if (Date < 1 && Date > daysInMonth)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

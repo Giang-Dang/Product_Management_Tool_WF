@@ -74,6 +74,7 @@
             this.btnClearSearchInfo.TabIndex = 2;
             this.btnClearSearchInfo.Text = "XÓA THÔNG TIN TÌM KIẾM";
             this.btnClearSearchInfo.UseVisualStyleBackColor = false;
+            this.btnClearSearchInfo.Click += new System.EventHandler(this.btnClearSearchInfo_Click);
             // 
             // pnlInfo
             // 
@@ -132,6 +133,9 @@
             this.cbbProductType.Name = "cbbProductType";
             this.cbbProductType.Size = new System.Drawing.Size(238, 28);
             this.cbbProductType.TabIndex = 12;
+            this.cbbProductType.SelectedIndexChanged += new System.EventHandler(this.cbbProductType_SelectedIndexChanged);
+            this.cbbProductType.Click += new System.EventHandler(this.cbbProductType_Click);
+            this.cbbProductType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbProductType_MouseClick);
             // 
             // lblProductType
             // 
@@ -155,6 +159,7 @@
             this.txbProductID.Size = new System.Drawing.Size(237, 26);
             this.txbProductID.TabIndex = 7;
             this.txbProductID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbProductID.TextChanged += new System.EventHandler(this.txbProductID_TextChanged);
             // 
             // lblProductID
             // 
@@ -249,6 +254,7 @@
             this.Controls.Add(this.pnlPrimaryControls);
             this.Name = "FrmSearch";
             this.Text = "FrmSearch";
+            this.Load += new System.EventHandler(this.FrmSearch_Load);
             this.pnlPrimaryControls.ResumeLayout(false);
             this.pnlInfo.ResumeLayout(false);
             this.tlpInput.ResumeLayout(false);

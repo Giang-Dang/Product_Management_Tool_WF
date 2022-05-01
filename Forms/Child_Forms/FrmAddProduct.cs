@@ -19,7 +19,6 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         {
             DateTime ExpiryDate;
             int ProductionYear;
-            bool res = true;
 
             if (FormIO.IsAnyInputBoxEmpty(tlpInput))
             {
@@ -34,22 +33,21 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             catch (Exception)
             {
                 MessageBox.Show(this, "Dữ liệu Hạn Dùng nhập sai kiểu dữ liệu. Xin nhập lại! (dd/MM/yyyy)", "Lỗi Nhập Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                res = false;
-                return res;
+                return false;
             }
 
             if (!Int32.TryParse(mtbManufactureYear.Text, out ProductionYear))
             {
                 MessageBox.Show(this, "Dữ liệu Năm Sản Xuất nhập sai kiểu dữ liệu. Xin nhập lại!", "Lỗi Nhập Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                res = false;
+                return false;
             }
 
             if ((int)ExpiryDate.Year < ProductionYear)
             {
                 MessageBox.Show(this, "Năm của hạn dùng sản phẩm phải lớn hơn năm sản xuất. Xin nhập lại!", "Lỗi Nhập Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                res = false;
+                return false;
             }
-            return res;
+            return true;
         }
 
         private void UpdateFromTableToInputBoxes(DataGridView dataGridView)
@@ -84,7 +82,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             }
             else
             {
-                DialogResult ConfirmAddProductionType = MessageBox.Show(this, "Loại hàng " + cbbProductType.Text + " chưa có trong dữ liệu. Bạn có muốn thêm loại hàng này không?", "Loại hàng mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult ConfirmAddProductionType = MessageBox.Show(this, "Loại hàng " + cbbProductType.Text + " chưa có trong dữ liệu. Bạn có muốn thêm loại hàng này không?", "Loại Hàng Mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (ConfirmAddProductionType == DialogResult.Yes)
                 {
                     Global.ProductList.Add(product);
@@ -100,7 +98,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 }
                 else
                 {
-                    MessageBox.Show(this, "Xin chọn lại loại hàng có trong danh sách", "Chọn loại hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, "Xin chọn lại loại hàng có trong danh sách", "Chọn Loại Hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -235,9 +233,21 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             {
                 MessageBox.Show(this, "Bạn chưa chọn dữ liệu từ bảng hoặc bạn đã chọn dữ liệu trống. Xin chọn lại!", "Lỗi Dữ Liệu Trống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (Global.ProductList.CurrentLength == 0)
+            {
+                MessageBox.Show(this, "Không có dữ liệu để xóa. Xin nhập dữ liệu!", "Lỗi Không Có Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
-                DialogResult confirmDeletingRow = MessageBox.Show(this, "Bạn có chắc chắn muốn xóa dữ liệu của MÃ HÀNG " + dgwProduct.Rows[TableCurrentRowIndex].Cells[0].Value.ToString(), "Xác nhận xóa dữ liệu", MessageBoxButtons.YesNo);
+                DialogResult confirmDeletingRow =
+                    MessageBox.Show(this, "Bạn có chắc chắn muốn xóa dữ liệu sau:" +
+                    "\nMã Hàng : " + dgwProduct.Rows[TableCurrentRowIndex].Cells[0].Value.ToString() +
+                    "\nTên Hàng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[1].Value.ToString() +
+                    "\nHạn Dùng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[2].Value.ToString() +
+                    "\nCông Ty Sản Xuất: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[3].Value.ToString() +
+                    "\nNăm Sản Xuất: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[4].Value.ToString() +
+                    "\nLoại Hàng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[5].Value.ToString()
+                    , "Xác nhận xóa lô hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmDeletingRow == DialogResult.Yes)
                 {
                     //remove type in both typelist

@@ -44,7 +44,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         {
             if (cbbProductType.SelectedIndex == -1)
             {
-                MessageBox.Show(this, "Bạn chưa chọn loại hàng. Xin chọn loại hàng trước khi thực hiện sửa.", "Chưa chọn loại hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Bạn chưa chọn loại hàng. Xin chọn loại hàng trước khi thực hiện sửa.", "Chưa Chọn Loại Hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -62,21 +62,28 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            DialogResult ConfirmRemovingType = MessageBox.Show(this, "Bạn có chắc chắn xóa loại hàng này và tất cả các lô hàng thuộc loại hàng này không?", "Xác nhận xóa loại hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(ConfirmRemovingType == DialogResult.Yes)
+            if (cbbProductType.Text == String.Empty)
             {
-                string selectingType = cbbProductType.Text;
-                Global.ProductList.RemoveAllProductInType(selectingType);
-                Global.TypeList.Remove(selectingType);
-                FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
-                dgwProduct.Rows.Clear();
+                MessageBox.Show(this, "Bạn chưa chọn loại hàng để xóa. Xin chọn lại!", "Chưa chọn loại hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                DialogResult ConfirmRemovingType = MessageBox.Show(this, "Bạn có chắc chắn xóa loại hàng này và tất cả các lô hàng thuộc loại hàng này không?", "Xác Nhận Xóa Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (ConfirmRemovingType == DialogResult.Yes)
+                {
+                    string selectingType = cbbProductType.Text;
+                    Global.ProductList.RemoveAllProductInType(selectingType);
+                    Global.TypeList.Remove(selectingType);
+                    FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
+                    dgwProduct.Rows.Clear();
+                }
             }
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (Global.TypeList.IsContain(cbbProductType.Text))
             {
-                MessageBox.Show(this, "Loại hàng này đã có trong danh sách. Xin nhập loại hàng khác!", "Loại hàng đã tồn tại", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Loại hàng này đã có trong danh sách. Xin nhập loại hàng khác!", "Loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -115,21 +122,23 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             FormIO.EnableControls(pnlPrimaryControls);
         }
 
-        
-
         private void cbbProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectingType = cbbProductType.SelectedItem.ToString();
+            SelectingType = cbbProductType.Text;
             ListProduct ListProductsBelongSelectingType = Global.ProductList.FindAllProductInType(SelectingType);
             FormIO.UpdateProductListToTable(ListProductsBelongSelectingType, dgwProduct);
         }
+
+        private void cbbProductType_MouseClick(object sender, MouseEventArgs e)
+        {
+            SelectingType = cbbProductType.Text;
+            ListProduct ListProductsBelongSelectingType = Global.ProductList.FindAllProductInType(SelectingType);
+            FormIO.UpdateProductListToTable(ListProductsBelongSelectingType, dgwProduct);
+        }
+
         private void cbbProductType_Click(object sender, EventArgs e)
         {
             FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
-            if (cbbProductType.DropDownStyle == ComboBoxStyle.DropDownList)
-            {
-                cbbProductType.SelectedIndex = cbbProductType.FindStringExact(SelectingType);
-            }
             if (cbbProductType.DropDownStyle == ComboBoxStyle.DropDown)
             {
                 cbbProductType.SelectAll();

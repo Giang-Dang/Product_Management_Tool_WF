@@ -178,6 +178,7 @@
             this.cbbProductType.TabIndex = 12;
             this.cbbProductType.SelectedIndexChanged += new System.EventHandler(this.cbbProductType_SelectedIndexChanged);
             this.cbbProductType.Click += new System.EventHandler(this.cbbProductType_Click);
+            this.cbbProductType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbProductType_MouseClick);
             // 
             // lblProductType
             // 
