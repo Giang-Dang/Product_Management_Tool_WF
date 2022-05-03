@@ -78,16 +78,19 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                     dgwProduct.Rows.Clear();
                 }
             }
+
+            PreviousButton = (Button)sender;
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (Global.TypeList.IsContain(cbbProductType.Text))
+            
+            if (PreviousButton == btnAddNew)
             {
-                MessageBox.Show(this, "Loại hàng này đã có trong danh sách. Xin nhập loại hàng khác!", "Loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                if (PreviousButton == btnAddNew)
+                if (Global.TypeList.IsContain(cbbProductType.Text))
+                {
+                    MessageBox.Show(this, "Loại hàng này đã có trong danh sách. Xin nhập loại hàng khác!", "Loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
                 {
                     Global.TypeList.Add(cbbProductType.Text);
 
@@ -96,44 +99,79 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
                     cbbProductType.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
-
-                if (PreviousButton == btnEdit)
-                {
-                    string newType = cbbProductType.Text;
-                    Global.TypeList.Edit(EditingType, newType);
-                    Global.ProductList.EditTypeForAllProductsHaveType(EditingType,newType);
-
-                    FormIO.DisableControls(pnlSecondaryControls);
-                    FormIO.EnableControls(pnlPrimaryControls);
-                    FormIO.UpdateProductListToTable(Global.ProductList.FindAllProductInType(newType), dgwProduct);
-
-                    cbbProductType.DropDownStyle = ComboBoxStyle.DropDownList;
-                    FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
-                    cbbProductType.SelectedIndex = cbbProductType.FindStringExact(newType);
-
-
-                }
             }
+
+            if (PreviousButton == btnEdit)
+            {
+                string newType = cbbProductType.Text;
+                
+                if (Global.TypeList.IsContain(newType))
+                {
+                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Bạn có chắc chắn muốn sửa loại hàng " + EditingType + " thành loại hàng " + newType + " này không?", "Sửa Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirmAddingNewType == DialogResult.No)
+                    {
+                        return;
+                    } 
+                    else
+                    {
+                        Global.TypeList.Remove(EditingType);
+                    }
+                }
+                else
+                {
+                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Loại hàng " + newType + " chưa có trong dữ liệu. Bạn có chắc chắn muốn thêm mới loại hàng " + newType + " và thay thế toàn bộ lô hàng có loại hàng " + EditingType + " bằng loại hàng " + newType + " này không?", "Loại Hàng Mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirmAddingNewType == DialogResult.Yes)
+                    {
+                        Global.TypeList.Add(newType);
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                if (Global.ProductList.FindAllProductInType(EditingType).CurrentLength > 0) //there is no product belongs to editing type
+                {
+                    Global.ProductList.EditTypeForAllProductsHaveType(EditingType, newType);
+                }
+
+                FormIO.DisableControls(pnlSecondaryControls);
+                FormIO.EnableControls(pnlPrimaryControls);
+                FormIO.UpdateProductListToTable(Global.ProductList.FindAllProductInType(newType), dgwProduct);
+
+                cbbProductType.DropDownStyle = ComboBoxStyle.DropDownList;
+                FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
+                cbbProductType.SelectedIndex = cbbProductType.FindStringExact(newType);               
+            }
+
+            PreviousButton = (Button)sender;
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cbbProductType.DropDownStyle = ComboBoxStyle.DropDownList;
             FormIO.DisableControls(pnlSecondaryControls);
             FormIO.EnableControls(pnlPrimaryControls);
+
+            PreviousButton = (Button)sender;
         }
 
         private void cbbProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectingType = cbbProductType.Text;
-            ListProduct ListProductsBelongSelectingType = Global.ProductList.FindAllProductInType(SelectingType);
-            FormIO.UpdateProductListToTable(ListProductsBelongSelectingType, dgwProduct);
+            if (PreviousButton != btnEdit)
+            {
+                ListProduct ListProductsBelongSelectingType = Global.ProductList.FindAllProductInType(SelectingType);
+                FormIO.UpdateProductListToTable(ListProductsBelongSelectingType, dgwProduct);
+            }
         }
 
         private void cbbProductType_MouseClick(object sender, MouseEventArgs e)
         {
             SelectingType = cbbProductType.Text;
-            ListProduct ListProductsBelongSelectingType = Global.ProductList.FindAllProductInType(SelectingType);
-            FormIO.UpdateProductListToTable(ListProductsBelongSelectingType, dgwProduct);
+            if (PreviousButton != btnEdit)
+            {
+                ListProduct ListProductsBelongSelectingType = Global.ProductList.FindAllProductInType(SelectingType);
+                FormIO.UpdateProductListToTable(ListProductsBelongSelectingType, dgwProduct);
+            }
         }
 
         private void cbbProductType_Click(object sender, EventArgs e)

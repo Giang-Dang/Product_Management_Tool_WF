@@ -138,6 +138,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void FrmAddProduct_Load(object sender, EventArgs e)
         {
+
             FormIO.DisableInputBoxes(tlpInput);
 
             FormIO.EnableControls(pnlPrimaryControls);
@@ -149,6 +150,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
             }
 
+            
             if(dgwProduct != null)
             {
                 UpdateFromTableToInputBoxes(dgwProduct);
