@@ -36,6 +36,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void cbbProductType_Click(object sender, EventArgs e)
         {
+            txbProductID.Text = String.Empty;
             FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
         }
         private void cbbProductType_MouseClick(object sender, MouseEventArgs e)

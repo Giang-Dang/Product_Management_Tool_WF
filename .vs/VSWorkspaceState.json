@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Product_Manage_Tool_WF",
+    "\\Product_Manage_Tool_WF\\IO"
   ],
-  "SelectedNode": "\\Product_Manage_Tool_WF.sln",
+  "SelectedNode": "\\Product_Manage_Tool_WF\\Product_Manage_Tool_WF.sln",
   "PreviewInSolutionExplorer": false
 }
