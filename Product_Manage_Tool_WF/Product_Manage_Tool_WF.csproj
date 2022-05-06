@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Global.cs" />
+    <Compile Include="Data\ListProduct.cs" />
     <Compile Include="Data\Product.cs" />
-    <Compile Include="Data\Type.cs" />
+    <Compile Include="Data\ListType.cs" />
     <Compile Include="Forms\Child_Forms\FrmAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>

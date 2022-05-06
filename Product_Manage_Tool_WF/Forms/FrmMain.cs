@@ -1,9 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using ThemeStyle = Product_Manage_Tool_WF.IO.ThemeStyle;
@@ -77,7 +73,7 @@ namespace Product_Manage_Tool_WF.Forms
         {
             if (ActivatingForm != null)
             {
-                ActivatingForm.Hide();
+                ActivatingForm.Close();
             }
             ActivateButton(btnSender);
 
