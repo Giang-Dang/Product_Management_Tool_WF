@@ -252,8 +252,6 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                     , "Xác nhận xóa lô hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmDeletingRow == DialogResult.Yes)
                 {
-                    //remove type in both typelist
-                    Global.TypeList.Remove(Global.ProductList.List[TableCurrentRowIndex].ProductType);
                     //remove element
                     Global.ProductList.RemoveAt(TableCurrentRowIndex);
                     //update table
