@@ -210,6 +210,7 @@
             this.ClnProductType});
             this.dgwProduct.Location = new System.Drawing.Point(14, 145);
             this.dgwProduct.Name = "dgwProduct";
+            this.dgwProduct.ReadOnly = true;
             this.dgwProduct.Size = new System.Drawing.Size(730, 374);
             this.dgwProduct.TabIndex = 6;
             // 
@@ -218,36 +219,42 @@
             this.ClnProductID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnProductID.HeaderText = "Mã";
             this.ClnProductID.Name = "ClnProductID";
+            this.ClnProductID.ReadOnly = true;
             // 
             // ClnProductname
             // 
             this.ClnProductname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnProductname.HeaderText = "Tên Hàng";
             this.ClnProductname.Name = "ClnProductname";
+            this.ClnProductname.ReadOnly = true;
             // 
             // ClnExpiryDate
             // 
             this.ClnExpiryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnExpiryDate.HeaderText = "Hạn Dùng";
             this.ClnExpiryDate.Name = "ClnExpiryDate";
+            this.ClnExpiryDate.ReadOnly = true;
             // 
             // ClnProductionCompany
             // 
             this.ClnProductionCompany.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnProductionCompany.HeaderText = "Công Ty Sản Xuất";
             this.ClnProductionCompany.Name = "ClnProductionCompany";
+            this.ClnProductionCompany.ReadOnly = true;
             // 
             // ClnManufactureYear
             // 
             this.ClnManufactureYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnManufactureYear.HeaderText = "Năm Sản Xuất";
             this.ClnManufactureYear.Name = "ClnManufactureYear";
+            this.ClnManufactureYear.ReadOnly = true;
             // 
             // ClnProductType
             // 
             this.ClnProductType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnProductType.HeaderText = "Loại Hàng";
             this.ClnProductType.Name = "ClnProductType";
+            this.ClnProductType.ReadOnly = true;
             // 
             // FrmAddProductType
             // 

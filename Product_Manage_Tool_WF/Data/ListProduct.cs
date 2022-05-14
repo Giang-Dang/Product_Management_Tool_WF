@@ -107,13 +107,13 @@ namespace Product_Manage_Tool_WF.Data
             }
         }
 
-        public ListProduct FindProductsHaveID(string ID)
+        public ListProduct FindProductsHaveID(string textInID)
         {
             Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
             int count = 0;
             for (int i = 0 ; i < CurrentLength; i++)
             {
-                if (List[i].ProductID == ID)
+                if (List[i].ProductID.Contains(textInID))
                 {
                     tempResultList[count] = List[i];
                     count++;
