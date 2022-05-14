@@ -82,7 +82,7 @@ namespace Product_Manage_Tool_WF.Data
             int count = 0;
             for (int i = 0; i < CurrentLength; i++)
             {
-                if (List[i].ProductType != type)
+                if (!List[i].ProductType.Equals(type))
                 {
                     res[count] = List[i];
                     count++;
@@ -100,7 +100,7 @@ namespace Product_Manage_Tool_WF.Data
         {
             for (int i = 0; i < CurrentLength; i++)
             {
-                if (List[i].ProductType == oldType)
+                if (List[i].ProductType.Equals(oldType))
                 {
                     List[i].ProductType = newType;
                 }
@@ -128,7 +128,7 @@ namespace Product_Manage_Tool_WF.Data
             int count = 0;
             for (int i = 0; i < CurrentLength; i++)
             {
-                if (List[i].ProductType == type)
+                if (List[i].ProductType.Equals(type))
                 {
                     tempResultList[count] = List[i];
                     count++;
