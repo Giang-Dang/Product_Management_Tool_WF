@@ -234,30 +234,31 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             if (FormIO.IsAllInputBoxEmpty(tlpInput)) //if no fields are selected
             {
                 MessageBox.Show(this, "Bạn chưa chọn dữ liệu từ bảng hoặc bạn đã chọn dữ liệu trống. Xin chọn lại!", "Lỗi Dữ Liệu Trống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (Global.ProductList.CurrentLength == 0)
+            if (Global.ProductList.CurrentLength == 0)
             {
                 MessageBox.Show(this, "Không có dữ liệu để xóa. Xin nhập dữ liệu!", "Lỗi Không Có Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+            
+            DialogResult confirmDeletingRow =
+                MessageBox.Show(this, "Bạn có chắc chắn muốn xóa dữ liệu sau:" +
+                "\nMã Hàng : " + dgwProduct.Rows[TableCurrentRowIndex].Cells[0].Value.ToString() +
+                "\nTên Hàng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[1].Value.ToString() +
+                "\nHạn Dùng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[2].Value.ToString() +
+                "\nCông Ty Sản Xuất: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[3].Value.ToString() +
+                "\nNăm Sản Xuất: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[4].Value.ToString() +
+                "\nLoại Hàng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[5].Value.ToString()
+                , "Xác nhận xóa lô hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmDeletingRow == DialogResult.Yes)
             {
-                DialogResult confirmDeletingRow =
-                    MessageBox.Show(this, "Bạn có chắc chắn muốn xóa dữ liệu sau:" +
-                    "\nMã Hàng : " + dgwProduct.Rows[TableCurrentRowIndex].Cells[0].Value.ToString() +
-                    "\nTên Hàng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[1].Value.ToString() +
-                    "\nHạn Dùng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[2].Value.ToString() +
-                    "\nCông Ty Sản Xuất: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[3].Value.ToString() +
-                    "\nNăm Sản Xuất: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[4].Value.ToString() +
-                    "\nLoại Hàng: " + dgwProduct.Rows[TableCurrentRowIndex].Cells[5].Value.ToString()
-                    , "Xác nhận xóa lô hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (confirmDeletingRow == DialogResult.Yes)
-                {
-                    //remove element
-                    Global.ProductList.RemoveAt(TableCurrentRowIndex);
-                    //update table
-                    FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
-                }
+                //remove element
+                Global.ProductList.RemoveAt(TableCurrentRowIndex);
+                //update table
+                FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
             }
+            
         }
 
         
