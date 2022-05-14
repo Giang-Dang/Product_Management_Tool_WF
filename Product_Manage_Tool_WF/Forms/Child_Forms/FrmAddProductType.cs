@@ -107,7 +107,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 
                 if (Global.TypeList.IsContain(newType))
                 {
-                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Bạn có chắc chắn muốn sửa loại hàng " + EditingType + " thành loại hàng " + newType + " này không?", "Sửa Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Bạn có chắc chắn muốn sửa loại hàng " + EditingType + " thành loại hàng " + newType + " không?", "Sửa Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (confirmAddingNewType == DialogResult.No)
                     {
                         return;
@@ -119,7 +119,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 }
                 else
                 {
-                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Loại hàng " + newType + " chưa có trong dữ liệu. Bạn có chắc chắn muốn thêm mới loại hàng " + newType + " và thay thế toàn bộ lô hàng có loại hàng " + EditingType + " bằng loại hàng " + newType + " này không?", "Loại Hàng Mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Loại hàng " + newType + " chưa có trong dữ liệu. Bạn có chắc chắn muốn thêm mới loại hàng " + newType + " và thay thế toàn bộ lô hàng có loại hàng " + EditingType + " bằng loại hàng " + newType + " không?", "Loại Hàng Mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (confirmAddingNewType == DialogResult.Yes)
                     {
                         Global.TypeList.Add(newType);
@@ -129,7 +129,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                         return;
                     }
                 }
-                if (Global.ProductList.FindAllProductInType(EditingType).CurrentLength > 0) //there is no product belongs to editing type
+                if (Global.ProductList.FindAllProductInType(EditingType).CurrentLength > 0) //if there is a product belongs to editing type
                 {
                     Global.ProductList.EditTypeForAllProductsHaveType(EditingType, newType);
                 }
