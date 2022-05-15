@@ -22,7 +22,11 @@ namespace Product_Manage_Tool_WF.Data
                 CurrentLength++;
             }
         }
-
+        public void Clear()
+        {
+            List = new Product[Global.MAX_LIST_LENGTH];
+            CurrentLength = 0;
+        }
         public int IndexOf(Product product)
         {
             for (int i = 0; i < CurrentLength; i++)
@@ -76,7 +80,7 @@ namespace Product_Manage_Tool_WF.Data
                 RemoveAt(removePosition);
             }
         }
-        public void RemoveAllProductInType(string type)
+        public void RemoveAllProductInType(Type type)
         {
             Product[] res = new Product[Global.MAX_LIST_LENGTH];
             int count = 0;
@@ -96,7 +100,7 @@ namespace Product_Manage_Tool_WF.Data
             List[editingPosition] = product;
         }
 
-        public void EditTypeForAllProductsHaveType(string oldType, string newType)
+        public void EditTypeForAllProductsHaveType(Type oldType, Type newType)
         {
             for (int i = 0; i < CurrentLength; i++)
             {
@@ -107,13 +111,13 @@ namespace Product_Manage_Tool_WF.Data
             }
         }
 
-        public ListProduct FindProductsHaveID(string textInID)
+        public ListProduct FindAllProductHaveThisStringInID(string thisString)
         {
             Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
             int count = 0;
             for (int i = 0 ; i < CurrentLength; i++)
             {
-                if (List[i].ProductID.Contains(textInID))
+                if (List[i].ProductID.Contains(thisString))
                 {
                     tempResultList[count] = List[i];
                     count++;
@@ -121,14 +125,27 @@ namespace Product_Manage_Tool_WF.Data
             }
             return new ListProduct(tempResultList, count);
         }
-
-        public ListProduct FindAllProductInType(string type)
+        public ListProduct FindAllProductBelongThisType(Type thisType)
         {
             Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
             int count = 0;
             for (int i = 0; i < CurrentLength; i++)
             {
-                if (List[i].ProductType.Equals(type))
+                if (List[i].ProductType.Equals(thisType))
+                {
+                    tempResultList[count] = List[i];
+                    count++;
+                }
+            }
+            return new ListProduct(tempResultList, count);
+        }
+        public ListProduct FindAllProductHaveThisStringInTypeID(string thisString)
+        {
+            Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
+            int count = 0;
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].ProductType.TypeID.Contains(thisString))
                 {
                     tempResultList[count] = List[i];
                     count++;
@@ -137,6 +154,19 @@ namespace Product_Manage_Tool_WF.Data
             return new ListProduct(tempResultList, count);
         }
 
-        
+        public ListProduct FindAllProductHaveThisStringInTypeName(string thisString)
+        {
+            Product[] tempResultList = new Product[Global.MAX_LIST_LENGTH];
+            int count = 0;
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].ProductType.TypeName.Contains(thisString))
+                {
+                    tempResultList[count] = List[i];
+                    count++;
+                }
+            }
+            return new ListProduct(tempResultList, count);
+        }
     }
 }

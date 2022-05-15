@@ -6,7 +6,9 @@ using FormIO = Product_Manage_Tool_WF.IO.FormIO;
 using ListProduct = Product_Manage_Tool_WF.Data.ListProduct;
 using ListType = Product_Manage_Tool_WF.Data.ListType;
 using Product = Product_Manage_Tool_WF.Data.Product;
+using Type = Product_Manage_Tool_WF.Data.Type;
 using Global = Product_Manage_Tool_WF.Data.Global;
+
 
 namespace Product_Manage_Tool_WF.Forms.Child_Forms
 {
@@ -47,6 +49,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 MessageBox.Show(this, "Năm của hạn dùng sản phẩm phải lớn hơn năm sản xuất. Xin nhập lại!", "Lỗi Nhập Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            
             return true;
         }
 
@@ -62,65 +65,27 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                     mtbExpiryDate.Text = row.Cells[2].Value.ToString();
                     txbProductionCompany.Text = row.Cells[3].Value.ToString();
                     mtbManufactureYear.Text = row.Cells[4].Value.ToString();
-                    cbbProductType.Text = row.Cells[5].Value.ToString();
+                    txbProductTypeID.Text = row.Cells[5].Value.ToString();
+                    cbbProductTypeName.Text = row.Cells[6].Value.ToString();
                 }
             }
         }
         private void AddNew(Product product)
         {
-            if (Global.TypeList.IsContain(cbbProductType.Text))
+            if (!Global.TypeList.IsContains(product.ProductType))
             {
-                Global.ProductList.Add(product);
-                if (!Global.TypeList.IsContain(product.ProductType))
-                {
-                    Global.TypeList.Add(product.ProductType);
-                }
-                FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
-                //set recently added row to selecting row
-                dgwProduct.Rows[TableNewRowIndex - 1].Selected = true;
-                dgwProduct.CurrentCell = dgwProduct.Rows[TableNewRowIndex - 1].Cells[0];
+                Global.TypeList.Add(product.ProductType);
             }
-            else
-            {
-                DialogResult ConfirmAddProductionType = MessageBox.Show(this, "Loại hàng " + cbbProductType.Text + " chưa có trong dữ liệu. Bạn có muốn thêm loại hàng này không?", "Loại Hàng Mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (ConfirmAddProductionType == DialogResult.Yes)
-                {
-                    Global.ProductList.Add(product);
-                    if (!Global.TypeList.IsContain(product.ProductType))
-                    {
-                        Global.TypeList.Add(product.ProductType);
-                    }
-                    FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
-                    //set recently added row to selecting row
-                    dgwProduct.Rows[TableNewRowIndex - 1].Selected = true;
-                    dgwProduct.CurrentCell = dgwProduct.Rows[TableNewRowIndex - 1].Cells[0];
+            Global.ProductList.Add(product);
 
-                }
-                else
-                {
-                    MessageBox.Show(this, "Xin chọn lại loại hàng có trong danh sách", "Chọn Loại Hàng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+            FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
+
+            //set recently added row to selecting row
+            dgwProduct.Rows[TableNewRowIndex - 1].Selected = true;
+            dgwProduct.CurrentCell = dgwProduct.Rows[TableNewRowIndex - 1].Cells[0];
         }
         private void Edit(Product product)
         {
-            string oldType = Global.ProductList.List[TableCurrentRowIndex].ProductType;
-            string newType = product.ProductType;
-            if (newType != oldType)
-            {
-                ListProduct ListProductsBelongEdittingType = Global.ProductList.FindProductsHaveID(oldType);
-                if (ListProductsBelongEdittingType.CurrentLength == 1)
-                {
-                    Global.TypeList.Edit(oldType, newType);
-                }
-                else
-                {
-                    if (!Global.TypeList.IsContain(newType))
-                    {
-                        Global.TypeList.Add(newType);
-                    }
-                }
-            }
 
             Global.ProductList.EditAt(TableCurrentRowIndex, product);
             FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
@@ -138,7 +103,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void FrmAddProduct_Load(object sender, EventArgs e)
         {
-
+            cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDown; //changing to DropDownList for showing selected Product Type (DropDown wont show text)
             FormIO.DisableInputBoxes(tlpInput);
 
             FormIO.EnableControls(pnlPrimaryControls);
@@ -193,7 +158,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                cbbProductType.Focus();
+                cbbProductTypeName.Focus();
             }
         }
 
@@ -209,6 +174,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             PreviousButton = (Button)sender;
             FormIO.EnableInputBoxes(tlpInput);
             FormIO.ClearInputBoxes(tlpInput);
+            cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not typing)
             txbProductID.Focus();
 
             FormIO.DisableControls(pnlPrimaryControls);
@@ -224,6 +190,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             else
             {
                 FormIO.EnableInputBoxes(tlpInput);
+                cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not typing)
+
                 FormIO.DisableControls(pnlPrimaryControls);
                 FormIO.EnableControls(pnlSecondaryControls);
             }
@@ -278,7 +246,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                     mtbExpiryDate.Text,
                     txbProductionCompany.Text,
                     Int32.Parse(mtbManufactureYear.Text),
-                    cbbProductType.Text
+                    new Type(txbProductTypeID.Text, cbbProductTypeName.Text)
                     );
 
                 if (Global.ProductList.IsContain(workingProduct))
@@ -296,6 +264,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                         Edit(workingProduct);
                     }
                     //set state for controls & input boxes
+                    cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //changing to DropDownList for showing selected Product Type (DropDown wont show text)
                     FormIO.DisableInputBoxes(tlpInput);
                     FormIO.EnableControls(pnlPrimaryControls);
                     FormIO.DisableControls(pnlSecondaryControls);
@@ -308,6 +277,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
 
             //set state for controls & input boxes
+            cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDown; //changing to DropDownList for showing selected Product Type (DropDown wont show text)
             FormIO.DisableInputBoxes(tlpInput);
             FormIO.EnableControls(pnlPrimaryControls);
             FormIO.DisableControls(pnlSecondaryControls);
@@ -315,7 +285,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void cbbProductType_Click(object sender, EventArgs e)
         {
-            FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductType);
+            FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductTypeName);
         }
 
         private void dgwProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -325,18 +295,27 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void lblProductID_Click(object sender, EventArgs e)
         {
-            Product product1 = new Product("1A", "dkfie", "20/07/2022", "HPG", 2020, "1");
-            Product product2 = new Product("2A", "ghj", "20/12/2022", "DWG", 2019, "2");
-            Product product3 = new Product("1B", "dfe", "12/07/2022", "TWM", 2020, "1");
-            Product product4 = new Product("2B", "u6eg", "01/03/2024", "QPN", 2022, "2");
-            Product product5 = new Product("1C", "ggr", "20/07/2022", "EMN", 2020, "1");
-            Product product6 = new Product("3A", "dkfie", "25/07/2026", "TKN", 2024, "3");
+            Product product1 = new Product("1Asdafdf", "dkfie", "20/07/2022", "HPG", 2020, new Type("1A", "Loai 1A"));
+            Product product2 = new Product("2Adasfvc", "ghj", "20/12/2022", "DWG", 2019, new Type("2A", "Loai 2A"));
+            Product product3 = new Product("1Bcvdfg", "dfe", "12/07/2022", "TWM", 2020, new Type("1B", "Loai 1B"));
+            Product product4 = new Product("2Bdsafe", "u6eg", "01/03/2024", "QPN", 2022, new Type("2B", "Loai 2B"));
+            Product product5 = new Product("1Cczxvd", "ggr", "20/07/2022", "EMN", 2020, new Type("1C", "Loai 1C"));
+            Product product6 = new Product("3Adsfe", "dkfie", "25/07/2026", "TKN", 2024, new Type("3A", "Loai 3A"));
             AddNew(product1);
             AddNew(product2);
             AddNew(product3);
             AddNew(product4);
             AddNew(product5);
             AddNew(product6);
+        }
+
+        private void cbbProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbProductTypeName.SelectedIndex != -1)
+            {
+                int selectedTypeListIndex = Global.TypeList.IndexOfTypeName(cbbProductTypeName.Text);
+                txbProductTypeID.Text = Global.TypeList.List[selectedTypeListIndex].TypeID;
+            }
         }
 
         private void dgwProduct_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)

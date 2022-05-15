@@ -83,6 +83,16 @@ namespace Product_Manage_Tool_WF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_synchronize_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-synchronize-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Storage_50x50 {
             get {
                 object obj = ResourceManager.GetObject("Storage_50x50", resourceCulture);

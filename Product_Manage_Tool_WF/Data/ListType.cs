@@ -4,17 +4,17 @@ namespace Product_Manage_Tool_WF.Data
 {
     public struct ListType
     {
-        public string[] List;
+        public Type[] List;
         public int CurrentLength;
 
-        public ListType(string[] _list, int _currentLength)
+        public ListType(Type[] _list, int _currentLength)
         {
             List = _list;
             CurrentLength = _currentLength;
         }
 
 
-        public void Add(string newType)
+        public void Add(Type newType)
         {
             if (CurrentLength < Global.MAX_LIST_LENGTH)
             {
@@ -28,7 +28,7 @@ namespace Product_Manage_Tool_WF.Data
             //when element's index reach Max index
             if (removePosition == Global.MAX_LIST_LENGTH - 1)
             {
-                List[removePosition] = default(string);
+                List[removePosition] = default(Type);
                 CurrentLength--;
             }
             //
@@ -41,22 +41,69 @@ namespace Product_Manage_Tool_WF.Data
                         List[i] = List[i + 1];
                     }
                 }
-                List[CurrentLength - 1] = default(string);
+                List[CurrentLength - 1] = default(Type);
                 CurrentLength--;
             }
         }
-        public int IndexOf(string type)
+        public int IndexOf(Type type)
         {
             for (int i = 0; i < CurrentLength; i++)
             {
-                if (List[i] == type)
+                if (List[i].Equals(type))
                 {
                     return i;
                 }
             }
             return -1;
         }
-        public void Remove(string removeType)
+
+        public int IndexOfTypeName(string thisTypeName)
+        {
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].TypeName.Equals(thisTypeName))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public bool IsContainsTypeID(string typeID)
+        {
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].TypeID == typeID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsContainsTypeName(string typeName)
+        {
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].TypeName == typeName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsContains(Type type)
+        {
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].Equals(type))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void Remove(Type removeType)
         {
             int removePosition = IndexOf(removeType);
 
@@ -65,27 +112,42 @@ namespace Product_Manage_Tool_WF.Data
                 RemoveAt(removePosition);
             }
         }
-        public void Edit(string oldType, string newType)
+        public void Edit(Type oldType, Type newType)
         {
             List[IndexOf(oldType)] = newType;
         }
         public void Clear()
         {
-            List = new string[Global.MAX_LIST_LENGTH];
+            List = new Type[Global.MAX_LIST_LENGTH];
             CurrentLength = 0;
         }
-        
-
-        public bool IsContain(string type)
+        public ListType FindAllProductHaveThisStringInTypeID(string thisString)
         {
-            if(IndexOf(type) == -1)
+            Type[] tempResultList = new Type[Global.MAX_LIST_LENGTH];
+            int count = 0;
+            for (int i = 0; i < CurrentLength; i++)
             {
-                return false;
+                if (List[i].TypeID.Contains(thisString))
+                {
+                    tempResultList[count] = List[i];
+                    count++;
+                }
             }
-            else
+            return new ListType(tempResultList, count);
+        }
+        public ListType FindAllProductHaveThisStringInTypeName(string thisString)
+        {
+            Type[] tempResultList = new Type[Global.MAX_LIST_LENGTH];
+            int count = 0;
+            for (int i = 0; i < CurrentLength; i++)
             {
-                return true;
+                if (List[i].TypeName.Contains(thisString))
+                {
+                    tempResultList[count] = List[i];
+                    count++;
+                }
             }
+            return new ListType(tempResultList, count);
         }
 
         public void GetListTypeFrom(ListProduct productList)

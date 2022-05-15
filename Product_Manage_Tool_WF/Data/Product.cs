@@ -8,10 +8,10 @@ namespace Product_Manage_Tool_WF.Data
         public string ProductName;
         public string ExpiryDate;
         public string ProductionCompany;
-        public string ProductType;
+        public Type ProductType;
         public int ManufactureYear;
 
-        public Product(string _productID, string _productName, string _expiryDate, string _productionCompany, int _manufactureYear, string _productType)
+        public Product(string _productID, string _productName, string _expiryDate, string _productionCompany, int _manufactureYear, Type _productType)
         {
             ProductID = _productID;
             ProductName = _productName;
