@@ -12,7 +12,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 {
     public partial class FrmSearch : Form
     {
-        private static ListProduct SearchResultProductList;
+        private static ListProduct SearchResultProductList = Global.ProductList;
+        private static ListType SearchResultTypeList;
         public FrmSearch()
         {
             InitializeComponent();
@@ -52,8 +53,11 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void cbbProductType_Click(object sender, EventArgs e)
         {
-            txbProductID.Text = String.Empty;
-            FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductTypeName);
+            if(txbProductTypeID.Text.Equals(String.Empty))
+            {
+                SearchResultTypeList = Global.TypeList;
+            }
+            FormIO.UpdateFromTypeListToComboBox(SearchResultTypeList, cbbProductTypeName);
         }
         private void cbbProductType_MouseClick(object sender, MouseEventArgs e)
         {
@@ -63,28 +67,26 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void txbProductTypeID_KeyUp(object sender, KeyEventArgs e)
         {
-            //clear txbProductID to make the search algorithm easier
+            //clear txbProductID and cbbProductTypeName to make the search algorithm easier
             txbProductID.Text = String.Empty;
+            cbbProductTypeName.SelectedIndex = -1;
 
             //Create searching Type List for updating cbbProductTypeName and using for generating product list
-            ListType searchingTypeList;
-            //clear cbbProductTypeName to make the search algorithm easier
-            cbbProductTypeName.SelectedIndex = -1;
             if (txbProductTypeID.Text == String.Empty)
             {
-                searchingTypeList = Global.TypeList;
+                SearchResultTypeList = Global.TypeList;
             }
             else
             {
-                searchingTypeList = Global.TypeList.FindAllProductHaveThisStringInTypeID(txbProductTypeID.Text);
+                SearchResultTypeList = Global.TypeList.FindAllProductHaveThisStringInTypeID(txbProductTypeID.Text);
             }
-            FormIO.UpdateFromTypeListToComboBox(searchingTypeList, cbbProductTypeName);
+            FormIO.UpdateFromTypeListToComboBox(SearchResultTypeList, cbbProductTypeName);
 
             //Generate list of products that meet search result criteria
             SearchResultProductList.Clear();
-            for(int i = 0; i < searchingTypeList.CurrentLength; i++)
+            for(int i = 0; i < SearchResultTypeList.CurrentLength; i++)
             {
-                Type workingType = searchingTypeList.List[i];
+                Type workingType = SearchResultTypeList.List[i];
                 ListProduct tempList = Global.ProductList.FindAllProductBelongThisType(workingType);
                 for(int j = 0; j < tempList.CurrentLength; j++)
                 {

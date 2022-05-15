@@ -122,9 +122,7 @@ namespace Product_Manage_Tool_WF.IO
         {
             foreach (Control control in inputTableLayoutPanel.Controls)
             {
-                if (control is Label)
-                { }
-                else
+                if (control is TextBox || control is ComboBox || control is MaskedTextBox)
                 {
                     control.Text = string.Empty;
                 }

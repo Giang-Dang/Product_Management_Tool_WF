@@ -150,19 +150,5 @@ namespace Product_Manage_Tool_WF.Data
             return new ListType(tempResultList, count);
         }
 
-        public void GetListTypeFrom(ListProduct productList)
-        {
-            Clear();
-            int count = 0;
-            for (int i = 0; i < productList.CurrentLength; i++)
-            {
-                if (IndexOf(productList.List[i].ProductType) != -1)
-                {
-                    List[count] = productList.List[i].ProductType;
-                    count++;
-                }
-            }
-        }
-
     }
 }

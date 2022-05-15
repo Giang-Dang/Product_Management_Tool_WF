@@ -36,6 +36,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.tlpInput = new System.Windows.Forms.TableLayoutPanel();
+            this.btnRefreshTypeTable = new System.Windows.Forms.Button();
             this.txbProductTypeName = new System.Windows.Forms.TextBox();
             this.lblProductTypeID = new System.Windows.Forms.Label();
             this.txbProductTypeID = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@
             this.lblInfoProductTable = new System.Windows.Forms.Label();
             this.pnlInfoInput = new System.Windows.Forms.Panel();
             this.lblInfoInput = new System.Windows.Forms.Label();
-            this.btnRefreshTypeTable = new System.Windows.Forms.Button();
             this.pnlSecondaryControls.SuspendLayout();
             this.pnlPrimaryControls.SuspendLayout();
             this.tlpInput.SuspendLayout();
@@ -180,6 +180,22 @@
             this.tlpInput.Size = new System.Drawing.Size(362, 81);
             this.tlpInput.TabIndex = 5;
             // 
+            // btnRefreshTypeTable
+            // 
+            this.btnRefreshTypeTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(40)))));
+            this.btnRefreshTypeTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRefreshTypeTable.FlatAppearance.BorderSize = 0;
+            this.btnRefreshTypeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshTypeTable.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshTypeTable.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRefreshTypeTable.Image = global::Product_Manage_Tool_WF.Properties.Resources.icons8_synchronize_30;
+            this.btnRefreshTypeTable.Location = new System.Drawing.Point(323, 3);
+            this.btnRefreshTypeTable.Name = "btnRefreshTypeTable";
+            this.btnRefreshTypeTable.Size = new System.Drawing.Size(36, 34);
+            this.btnRefreshTypeTable.TabIndex = 11;
+            this.btnRefreshTypeTable.UseVisualStyleBackColor = false;
+            this.btnRefreshTypeTable.Click += new System.EventHandler(this.btnRefreshTypeTable_Click);
+            // 
             // txbProductTypeName
             // 
             this.tlpInput.SetColumnSpan(this.txbProductTypeName, 2);
@@ -189,7 +205,6 @@
             this.txbProductTypeName.Name = "txbProductTypeName";
             this.txbProductTypeName.Size = new System.Drawing.Size(226, 26);
             this.txbProductTypeName.TabIndex = 14;
-            this.txbProductTypeName.TextChanged += new System.EventHandler(this.txbProductTypeName_TextChanged);
             this.txbProductTypeName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbProductTypeName_KeyUp);
             // 
             // lblProductTypeID
@@ -212,7 +227,6 @@
             this.txbProductTypeID.Name = "txbProductTypeID";
             this.txbProductTypeID.Size = new System.Drawing.Size(184, 26);
             this.txbProductTypeID.TabIndex = 13;
-            this.txbProductTypeID.TextChanged += new System.EventHandler(this.txbProductTypeID_TextChanged);
             this.txbProductTypeID.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbProductTypeID_KeyUp);
             // 
             // lblProductType
@@ -324,6 +338,7 @@
             this.ClnTypeID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ClnTypeID.HeaderText = "Mã Loại Hàng";
             this.ClnTypeID.Name = "ClnTypeID";
+            this.ClnTypeID.ReadOnly = true;
             this.ClnTypeID.Width = 91;
             // 
             // ClnTypeName
@@ -331,6 +346,7 @@
             this.ClnTypeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClnTypeName.HeaderText = "Tên Loại Hàng";
             this.ClnTypeName.Name = "ClnTypeName";
+            this.ClnTypeName.ReadOnly = true;
             // 
             // pnlInfoProductTable
             // 
@@ -383,22 +399,6 @@
             this.lblInfoInput.Text = "Nhập để tìm kiếm. Chọn ở bảng để thao tác.";
             this.lblInfoInput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblInfoInput.UseCompatibleTextRendering = true;
-            // 
-            // btnRefreshTypeTable
-            // 
-            this.btnRefreshTypeTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(38)))), ((int)(((byte)(40)))));
-            this.btnRefreshTypeTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRefreshTypeTable.FlatAppearance.BorderSize = 0;
-            this.btnRefreshTypeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefreshTypeTable.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshTypeTable.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRefreshTypeTable.Image = global::Product_Manage_Tool_WF.Properties.Resources.icons8_synchronize_30;
-            this.btnRefreshTypeTable.Location = new System.Drawing.Point(323, 3);
-            this.btnRefreshTypeTable.Name = "btnRefreshTypeTable";
-            this.btnRefreshTypeTable.Size = new System.Drawing.Size(36, 34);
-            this.btnRefreshTypeTable.TabIndex = 11;
-            this.btnRefreshTypeTable.UseVisualStyleBackColor = false;
-            this.btnRefreshTypeTable.Click += new System.EventHandler(this.btnRefreshTypeTable_Click);
             // 
             // FrmAddProductType
             // 

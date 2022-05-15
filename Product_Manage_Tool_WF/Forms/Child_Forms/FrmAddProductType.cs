@@ -15,8 +15,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         private static int TypeTableNewRowIndex,
                            TypeTableCurrentRowIndex;
         private static Button PreviousButton;
-        private static Type   SelectingType,
-                                EditingType;
+        private static Type EditingType;
         private static ListType SelectingTypeList;
 
         public void UpdateFromTypeTableToInputBoxes(DataGridView dataGridView)
@@ -269,15 +268,5 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             FormIO.EnableControls(pnlPrimaryControls);
             FormIO.DisableControls(pnlSecondaryControls);
         }
-
-        private void txbProductTypeID_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-        private void txbProductTypeName_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
     }
 }

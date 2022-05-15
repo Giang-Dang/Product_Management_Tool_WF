@@ -17,6 +17,9 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         private static int TableNewRowIndex,
                             TableCurrentRowIndex;
         private static Button PreviousButton;
+        //
+        //
+        //
         private bool IsAllTextBoxValidInput()
         {
             DateTime ExpiryDate;
@@ -52,7 +55,6 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             
             return true;
         }
-
         private void UpdateFromTableToInputBoxes(DataGridView dataGridView)
         {
             if (dataGridView.SelectedCells.Count > 0)
@@ -93,13 +95,13 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             dgwProduct.Rows[TableCurrentRowIndex].Selected = true;
             dgwProduct.CurrentCell = dgwProduct.Rows[TableCurrentRowIndex].Cells[0];
         }
-
+        //
+        //
+        //
         public FrmAddProduct()
         {
             InitializeComponent();
         }
-
-
 
         private void FrmAddProduct_Load(object sender, EventArgs e)
         {
@@ -227,8 +229,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 }
             }
         }
-
-        
+   
         private void btnConfirm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -291,22 +292,6 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         private void dgwProduct_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             TableNewRowIndex = e.RowIndex + 1;
-        }
-
-        private void lblProductID_Click(object sender, EventArgs e)
-        {
-            Product product1 = new Product("1Asdafdf", "dkfie", "20/07/2022", "HPG", 2020, new Type("1A", "Loai 1A"));
-            Product product2 = new Product("2Adasfvc", "ghj", "20/12/2022", "DWG", 2019, new Type("2A", "Loai 2A"));
-            Product product3 = new Product("1Bcvdfg", "dfe", "12/07/2022", "TWM", 2020, new Type("1B", "Loai 1B"));
-            Product product4 = new Product("2Bdsafe", "u6eg", "01/03/2024", "QPN", 2022, new Type("2B", "Loai 2B"));
-            Product product5 = new Product("1Cczxvd", "ggr", "20/07/2022", "EMN", 2020, new Type("1C", "Loai 1C"));
-            Product product6 = new Product("3Adsfe", "dkfie", "25/07/2026", "TKN", 2024, new Type("3A", "Loai 3A"));
-            AddNew(product1);
-            AddNew(product2);
-            AddNew(product3);
-            AddNew(product4);
-            AddNew(product5);
-            AddNew(product6);
         }
 
         private void cbbProductType_SelectedIndexChanged(object sender, EventArgs e)
