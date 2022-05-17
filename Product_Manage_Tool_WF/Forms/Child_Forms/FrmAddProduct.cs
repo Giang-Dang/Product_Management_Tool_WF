@@ -111,12 +111,17 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             FormIO.EnableControls(pnlPrimaryControls);
             FormIO.DisableControls(pnlSecondaryControls);
 
-            //If ProductList has element, update this list to dgwProduct
+            //If there is element in ProductList, update this list to dgwProduct
             if(Global.ProductList.CurrentLength > 0)
             {
                 FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
             }
 
+            //If there is element in TypeList, update this list to cbbProductTypeName
+            if (Global.TypeList.CurrentLength > 0)
+            {
+                FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductTypeName);
+            }    
             
             if(dgwProduct != null)
             {

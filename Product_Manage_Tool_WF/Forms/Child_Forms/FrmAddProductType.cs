@@ -30,6 +30,87 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 }
             }
         }
+        public void CheckAndEdit(Type newType)
+        {
+            bool isAsked = false;
+
+            if (newType.Equals(EditingType))
+            {
+                MessageBox.Show(this, "Chưa có thay đổi gì trong loại hàng này. Xin chỉnh sửa trước khi ấn xác nhận hoặc ấn hủy để giữ nguyên loại hàng.", "Loại Hàng Chưa Được Chỉnh Sửa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (newType.TypeID == EditingType.TypeID && !isAsked)
+            {
+                DialogResult confirmAddingNewType = MessageBox.Show(this, "Bạn có chắc chắn muốn sửa tên loại hàng của Mã: " + EditingType.TypeID +
+                    " thành " + newType.TypeName + " không?", "Sửa Tên Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmAddingNewType == DialogResult.Yes)
+                {
+                    Global.TypeList.Edit(EditingType, newType);
+                    isAsked = true;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (Global.TypeList.IsContains(newType) && !isAsked)
+            {
+                DialogResult confirmAddingNewType = MessageBox.Show(this, "Bạn có chắc chắn muốn sửa loại hàng " + EditingType.TypeName + " (Mã: " + EditingType.TypeID +
+                    ") thành loại hàng " + newType.TypeName + " (Mã: " + newType.TypeID + ") không?", "Sửa Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmAddingNewType == DialogResult.Yes)
+                {
+                    isAsked = true;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            if (!Global.TypeList.IsContains(newType) && !isAsked)
+            {
+                DialogResult confirmAddingNewType = MessageBox.Show(this, "Loại hàng " + newType.TypeName + " (Mã: " + newType.TypeID +
+                    ") chưa có trong dữ liệu. Bạn có chắc chắn muốn thêm mới loại hàng " + newType.TypeName + " (Mã: " + newType.TypeID +
+                    ") và thay thế toàn bộ lô hàng có loại hàng " + EditingType.TypeName + " (Mã: " + EditingType.TypeID + ") bằng loại hàng "
+                    + newType.TypeName + " (Mã: " + newType.TypeID + ") không?", "Loại Hàng Được Sửa Thành Loại Hàng Chưa Có Trong Danh Sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmAddingNewType == DialogResult.Yes)
+                {
+                    Global.TypeList.Add(newType);
+                    TypeTableCurrentRowIndex = TypeTableNewRowIndex;
+                    isAsked = true;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            //If find any products belongs EditingType , edit them. 
+            if (Global.ProductList.FindAllProductBelongThisType(EditingType).CurrentLength > 0)
+            {
+                Global.ProductList.EditTypeForAllProductsHaveType(EditingType, newType);
+            }
+        }
+        public void AddNew()
+        {
+            if (Global.TypeList.IsContainsTypeID(txbProductTypeID.Text))
+            {
+                MessageBox.Show(this, "Mã loại hàng này đã có trong danh sách. Xin nhập mã loại hàng khác!", "Mã Loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (Global.TypeList.IsContainsTypeName(txbProductTypeName.Text))
+            {
+                MessageBox.Show(this, "Tên loại hàng này đã có trong danh sách. Xin nhập tên khác!", "Tên loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Type addingType = new Type(txbProductTypeID.Text, txbProductTypeName.Text);
+
+            Global.TypeList.Add(addingType);
+            TypeTableCurrentRowIndex = TypeTableNewRowIndex;
+        }
         public FrmAddProductType()
         {
             InitializeComponent();
@@ -37,7 +118,10 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
         private void FrmAddProductType_Load(object sender, EventArgs e)
         {
-            FormIO.UpdateTypeListToTable(Global.TypeList, dgwType);
+            if (Global.TypeList.CurrentLength > 0)
+            {
+                FormIO.UpdateTypeListToTable(Global.TypeList, dgwType);
+            }
             FormIO.EnableControls(pnlPrimaryControls);
             FormIO.DisableControls(pnlSecondaryControls);
         }
@@ -82,6 +166,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
             FormIO.DisableTables(this);
 
+            dgwType.ClearSelection();
             dgwType.Rows[TypeTableCurrentRowIndex].Selected = true;
 
             txbProductTypeID.Text = EditingType.TypeID;
@@ -108,6 +193,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
                 return;
             }
 
+            dgwType.ClearSelection();
             dgwType.Rows[TypeTableCurrentRowIndex].Selected = true;
 
             DialogResult ConfirmRemovingType = MessageBox.Show(this, "Bạn có chắc chắn xóa loại hàng " + txbProductTypeName.Text + " (Mã: " + txbProductTypeID.Text + 
@@ -128,72 +214,26 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             
             if (PreviousButton == btnAddNew)
             {
-                if (Global.TypeList.IsContainsTypeID(txbProductTypeID.Text))
-                {
-                    MessageBox.Show(this, "Mã loại hàng này đã có trong danh sách. Xin nhập mã loại hàng khác!", "Mã Loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (Global.TypeList.IsContainsTypeName(txbProductTypeName.Text))
-                {
-                    MessageBox.Show(this, "Tên loại hàng này đã có trong danh sách. Xin nhập tên khác!", "Tên loại Hàng Đã Tồn Tại", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                Type addingType = new Type(txbProductTypeID.Text, txbProductTypeName.Text);
-
-                Global.TypeList.Add(addingType);
-
-                FormIO.DisableControls(pnlSecondaryControls);
-                FormIO.EnableControls(pnlPrimaryControls);
-
-                FormIO.EnableTables(this);
-                FormIO.UpdateTypeListToTable(Global.TypeList, dgwType);
-                UpdateFromTypeTableToInputBoxes(dgwType);
-
+                AddNew();
             }
 
             if (PreviousButton == btnEdit)
             {
                 Type newType = new Type(txbProductTypeID.Text, txbProductTypeName.Text);
+                CheckAndEdit(newType);
 
-                if (Global.TypeList.IsContains(newType))
-                {
-                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Bạn có chắc chắn muốn sửa loại hàng " + EditingType.TypeName + " (Mã: " + EditingType.TypeID +
-                        ") thành loại hàng "  + newType.TypeName + " (Mã: " + newType.TypeID + ") không?", "Sửa Loại Hàng", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (confirmAddingNewType == DialogResult.No)
-                    {
-                        return;
-                    } 
-                }
-                else
-                {
-                    DialogResult confirmAddingNewType = MessageBox.Show(this, "Loại hàng " + newType.TypeName + " (Mã: " + newType.TypeID +
-                        ") chưa có trong dữ liệu. Bạn có chắc chắn muốn thêm mới loại hàng " + newType.TypeName + " (Mã: " + newType.TypeID +
-                        ") và thay thế toàn bộ lô hàng có loại hàng " + EditingType.TypeName + " (Mã: " + EditingType.TypeID + ") bằng loại hàng "
-                        + newType.TypeName + " (Mã: " + newType.TypeID + ") không?", "Loại Hàng Được Sửa Thành Loại Hàng Chưa Có Trong Danh Sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (confirmAddingNewType == DialogResult.Yes)
-                    {
-                        Global.TypeList.Add(newType);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                if (Global.ProductList.FindAllProductBelongThisType(EditingType).CurrentLength > 0) //if there is a product belongs to editing type
-                {
-                    Global.ProductList.EditTypeForAllProductsHaveType(EditingType, newType);
-                }
-
-                FormIO.DisableControls(pnlSecondaryControls);
-                FormIO.EnableControls(pnlPrimaryControls);
-
-                FormIO.EnableTables(this);
-                FormIO.UpdateTypeListToTable(Global.TypeList, dgwType);
                 FormIO.UpdateProductListToTable(Global.ProductList.FindAllProductBelongThisType(newType), dgwProduct);
-                UpdateFromTypeTableToInputBoxes(dgwType);       
             }
+
+            FormIO.DisableControls(pnlSecondaryControls);
+            FormIO.EnableControls(pnlPrimaryControls);
+
+            FormIO.EnableTables(this);
+            FormIO.UpdateTypeListToTable(Global.TypeList, dgwType);
+
+            dgwType.ClearSelection();
+            dgwType.Rows[TypeTableCurrentRowIndex].Selected = true;
+            UpdateFromTypeTableToInputBoxes(dgwType);
 
             PreviousButton = (Button)sender;
         }

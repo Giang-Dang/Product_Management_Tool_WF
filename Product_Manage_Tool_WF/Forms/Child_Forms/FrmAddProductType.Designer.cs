@@ -239,7 +239,7 @@
             this.lblProductType.Name = "lblProductType";
             this.lblProductType.Size = new System.Drawing.Size(124, 41);
             this.lblProductType.TabIndex = 6;
-            this.lblProductType.Text = "Loại Hàng:";
+            this.lblProductType.Text = "Tên Loại Hàng:";
             // 
             // dgwProduct
             // 
@@ -396,8 +396,8 @@
             this.lblInfoInput.Name = "lblInfoInput";
             this.lblInfoInput.Size = new System.Drawing.Size(625, 49);
             this.lblInfoInput.TabIndex = 0;
-            this.lblInfoInput.Text = "Nhấn thêm mới để thêm loại hàng mới. Nhập để tìm kiếm. Chọn loại hàng ở bảng để t" +
-    "hao tác.";
+            this.lblInfoInput.Text = "Nhấn thêm mới để thêm loại hàng mới. Nhập vào ô mã hoặc tên loại hàng để tìm kiếm" +
+    ". Chọn loại hàng ở bảng để thao tác.";
             this.lblInfoInput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblInfoInput.UseCompatibleTextRendering = true;
             // 

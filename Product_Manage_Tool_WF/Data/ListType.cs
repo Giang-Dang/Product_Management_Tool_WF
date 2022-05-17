@@ -68,6 +68,17 @@ namespace Product_Manage_Tool_WF.Data
             }
             return -1;
         }
+        public int IndexOfTypeID(string thisTypeID)
+        {
+            for (int i = 0; i < CurrentLength; i++)
+            {
+                if (List[i].TypeName.Equals(thisTypeID))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
         public bool IsContainsTypeID(string typeID)
         {
             for (int i = 0; i < CurrentLength; i++)
@@ -114,7 +125,10 @@ namespace Product_Manage_Tool_WF.Data
         }
         public void Edit(Type oldType, Type newType)
         {
-            List[IndexOf(oldType)] = newType;
+            if (IsContains(oldType))
+            {
+                List[IndexOf(oldType)] = newType;
+            }
         }
         public void Clear()
         {

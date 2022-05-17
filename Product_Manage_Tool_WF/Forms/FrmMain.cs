@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using ThemeStyle = Product_Manage_Tool_WF.IO.ThemeStyle;
-
+using Global = Product_Manage_Tool_WF.Data.Global;
 namespace Product_Manage_Tool_WF.Forms
 {
     public partial class FrmMain : Form
@@ -95,6 +95,21 @@ namespace Product_Manage_Tool_WF.Forms
             //initialize random (prevent null error)
             random = new Random();
 
+            //Add some product types
+            Global.TypeList.Add(new Data.Type("NUOCNGOT01", "Coca Cola"));
+            Global.TypeList.Add(new Data.Type("NUOCNGOT02", "Pepsi"));
+            Global.TypeList.Add(new Data.Type("BANH01", "Bánh Ngọt"));
+            Global.TypeList.Add(new Data.Type("BANH02", "Bánh Mặn"));
+            Global.TypeList.Add(new Data.Type("KEO01", "Kẹo sinh-gum"));
+            Global.TypeList.Add(new Data.Type("KEO02", "Kẹo ngậm"));
+
+            //Add some products
+            Global.ProductList.Add(new Data.Product("A4387384", "Coca Cola Light", "29/02/2024", "Công ty Coca-Cola", 2022, new Data.Type("NUOCNGOT01", "Coca Cola")));
+            Global.ProductList.Add(new Data.Product("A9067860", "Coca Cola Zero", "21/12/2024", "Công ty Coca-Cola", 2022, new Data.Type("NUOCNGOT01", "Coca Cola")));
+            Global.ProductList.Add(new Data.Product("B4385749", "Pepsi Diet", "12/01/2023", "Công ty PepsiCo", 2020, new Data.Type("NUOCNGOT02", "Pepsi")));
+            Global.ProductList.Add(new Data.Product("B6378952", "Pepsi Thường", "24/06/2023", "Công ty PepsiCo", 2021, new Data.Type("NUOCNGOT02", "Pepsi")));
+            Global.ProductList.Add(new Data.Product("C4838219", "Sing-gum Cool Air", "12/03/2025", "Công ty Wrigley", 2021, new Data.Type("KEO01", "Kẹo sinh-gum")));
+            Global.ProductList.Add(new Data.Product("D5712946", "Bánh Bông Lan", "24/08/2022", "Công ty Kinh Đô", 2022, new Data.Type("BANH01", "Bánh Ngọt")));
             //initialize controls
             OpenChildForm(new Child_Forms.FrmAddProduct(), (object)btnProductManagement);
         }

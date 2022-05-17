@@ -21,7 +21,16 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         private void FrmSearch_Load(object sender, EventArgs e)
         {
             cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList;
-            FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductTypeName);
+            if (Global.TypeList.CurrentLength > 0)
+            {
+                FormIO.UpdateFromTypeListToComboBox(Global.TypeList, cbbProductTypeName);
+            }
+
+            if (Global.ProductList.CurrentLength > 0)
+            {
+                FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
+            }
+            SearchResultProductList.Clear();
         }
 
         private void btnClearSearchInfo_Click(object sender, EventArgs e)
@@ -29,6 +38,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             FormIO.ClearInputBoxes(tlpInput);
             cbbProductTypeName.SelectedIndex = -1;
             lblResult.Text = "KẾT QUẢ:";
+            dgwProduct.Rows.Clear();
         }
 
         private void cbbProductType_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,5 +120,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             }
             FormIO.UpdateProductListToTable(tempSearchList, dgwProduct);
         }
+
+
     }
 }
