@@ -185,6 +185,12 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             }
 
             PreviousButton = (Button)sender;
+
+            if (Global.TypeList.CurrentLength == 0)
+            {
+                MessageBox.Show(this, "Danh sách loại hàng hiện đang trống. Xin chọn thẻ Quản Lý Loại Hàng để nhập loại hàng trước khi nhập mặt hàng.", "Danh Sách Loại Hàng Trống", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             FormIO.EnableInputBoxes(tlpInput);
             FormIO.ClearInputBoxes(tlpInput);
             cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not for typing)
