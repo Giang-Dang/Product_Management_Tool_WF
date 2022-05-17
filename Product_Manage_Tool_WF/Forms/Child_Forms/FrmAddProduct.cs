@@ -173,10 +173,16 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
         }
         private void btnAddNew_Click(object sender, EventArgs e)
         {
+            if (Global.TypeList.CurrentLength == 0)
+            {
+                MessageBox.Show(this, "Danh sách loại hàng đang trống. Xin nhấn thẻ Quản Lý Loại Hàng để nhập loại hàng trước khi nhập mặt hàng.", "Danh Sách Loại Hàng Trống", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             PreviousButton = (Button)sender;
             FormIO.EnableInputBoxes(tlpInput);
             FormIO.ClearInputBoxes(tlpInput);
-            cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not typing)
+            cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not for typing)
             txbProductID.Focus();
 
             FormIO.DisableControls(pnlPrimaryControls);
@@ -192,7 +198,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             else
             {
                 FormIO.EnableInputBoxes(tlpInput);
-                cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not typing)
+                cbbProductTypeName.DropDownStyle = ComboBoxStyle.DropDownList; //make cbbProductType only available for choosing type (not for typing)
 
                 FormIO.DisableControls(pnlPrimaryControls);
                 FormIO.EnableControls(pnlSecondaryControls);

@@ -172,7 +172,7 @@
             this.tlpInput.Controls.Add(this.lblProductTypeID, 0, 0);
             this.tlpInput.Controls.Add(this.txbProductTypeID, 1, 0);
             this.tlpInput.Controls.Add(this.lblProductType, 0, 1);
-            this.tlpInput.Location = new System.Drawing.Point(14, 48);
+            this.tlpInput.Location = new System.Drawing.Point(14, 62);
             this.tlpInput.Name = "tlpInput";
             this.tlpInput.RowCount = 2;
             this.tlpInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -325,10 +325,10 @@
             this.dgwType.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClnTypeID,
             this.ClnTypeName});
-            this.dgwType.Location = new System.Drawing.Point(382, 48);
+            this.dgwType.Location = new System.Drawing.Point(382, 62);
             this.dgwType.Name = "dgwType";
             this.dgwType.ReadOnly = true;
-            this.dgwType.Size = new System.Drawing.Size(257, 194);
+            this.dgwType.Size = new System.Drawing.Size(257, 180);
             this.dgwType.TabIndex = 7;
             this.dgwType.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwType_CellMouseUp);
             this.dgwType.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgwType_RowsAdded);
@@ -382,7 +382,7 @@
             this.pnlInfoInput.Controls.Add(this.lblInfoInput);
             this.pnlInfoInput.Location = new System.Drawing.Point(14, 7);
             this.pnlInfoInput.Name = "pnlInfoInput";
-            this.pnlInfoInput.Size = new System.Drawing.Size(625, 35);
+            this.pnlInfoInput.Size = new System.Drawing.Size(625, 49);
             this.pnlInfoInput.TabIndex = 10;
             // 
             // lblInfoInput
@@ -394,9 +394,10 @@
             this.lblInfoInput.Location = new System.Drawing.Point(0, 0);
             this.lblInfoInput.Margin = new System.Windows.Forms.Padding(0);
             this.lblInfoInput.Name = "lblInfoInput";
-            this.lblInfoInput.Size = new System.Drawing.Size(625, 35);
+            this.lblInfoInput.Size = new System.Drawing.Size(625, 49);
             this.lblInfoInput.TabIndex = 0;
-            this.lblInfoInput.Text = "Nhập để tìm kiếm. Chọn ở bảng để thao tác.";
+            this.lblInfoInput.Text = "Nhấn thêm mới để thêm loại hàng mới. Nhập để tìm kiếm. Chọn loại hàng ở bảng để t" +
+    "hao tác.";
             this.lblInfoInput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblInfoInput.UseCompatibleTextRendering = true;
             // 
