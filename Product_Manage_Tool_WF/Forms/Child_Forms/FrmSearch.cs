@@ -59,6 +59,10 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 
             SearchResultProductList = Global.ProductList.FindAllProductBelongThisType(selectingType);
             FormIO.UpdateProductListToTable(SearchResultProductList, dgwProduct);
+            if (SearchResultProductList.CurrentLength == 0)
+            {
+                lblResult.Text = "KẾT QUẢ: KHÔNG TÌM THẤY LÔ HÀNG THỎA ĐIỀU KIỆN TÌM KIẾM";
+            }    
         }
 
 
