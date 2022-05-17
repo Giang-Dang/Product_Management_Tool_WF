@@ -57,7 +57,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             }
             txbProductID.Text = String.Empty;
 
-            FormIO.UpdateProductListToTable(Global.ProductList.FindAllProductBelongThisType(selectingType), dgwProduct);
+            SearchResultProductList = Global.ProductList.FindAllProductBelongThisType(selectingType);
+            FormIO.UpdateProductListToTable(SearchResultProductList, dgwProduct);
         }
 
 
