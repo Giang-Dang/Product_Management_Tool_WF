@@ -12,8 +12,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 {
     public partial class FrmSearch : Form
     {
-        private ListProduct SearchResultProductList;
-        private ListType SearchResultTypeList;
+        private static ListProduct SearchResultProductList;
+        private static ListType SearchResultTypeList;
         public FrmSearch()
         {
             InitializeComponent();
