@@ -30,6 +30,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             {
                 FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
             }
+            SearchResultTypeList.Clear();
             SearchResultProductList.Clear();
         }
 
