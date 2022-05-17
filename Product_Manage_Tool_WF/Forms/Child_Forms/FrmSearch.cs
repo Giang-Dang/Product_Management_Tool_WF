@@ -12,8 +12,8 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
 {
     public partial class FrmSearch : Form
     {
-        private static ListProduct SearchResultProductList = Global.ProductList;
-        private static ListType SearchResultTypeList;
+        private ListProduct SearchResultProductList;
+        private ListType SearchResultTypeList;
         public FrmSearch()
         {
             InitializeComponent();
@@ -30,8 +30,7 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             {
                 FormIO.UpdateProductListToTable(Global.ProductList, dgwProduct);
             }
-            SearchResultTypeList.Clear();
-            SearchResultProductList.Clear();
+            SearchResultProductList = Global.ProductList;
         }
 
         private void btnClearSearchInfo_Click(object sender, EventArgs e)
