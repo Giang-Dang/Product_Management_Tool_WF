@@ -65,7 +65,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSearch.Image = global::Product_Manage_Tool_WF.Properties.Resources.icons8_search_50;
+            this.btnSearch.Image = global::Product_Management_Tool_WF.Properties.Resources.icons8_search_50;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearch.Location = new System.Drawing.Point(0, 210);
             this.btnSearch.Name = "btnSearch";
@@ -83,7 +83,7 @@
             this.btnTypeManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTypeManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTypeManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTypeManagement.Image = global::Product_Manage_Tool_WF.Properties.Resources.icons8_add_tag_50;
+            this.btnTypeManagement.Image = global::Product_Management_Tool_WF.Properties.Resources.icons8_add_tag_50;
             this.btnTypeManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTypeManagement.Location = new System.Drawing.Point(0, 150);
             this.btnTypeManagement.Name = "btnTypeManagement";
@@ -101,7 +101,7 @@
             this.btnProductManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProductManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnProductManagement.Image = global::Product_Manage_Tool_WF.Properties.Resources.Storage_50x50;
+            this.btnProductManagement.Image = global::Product_Management_Tool_WF.Properties.Resources.Storage_50x50;
             this.btnProductManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProductManagement.Location = new System.Drawing.Point(0, 90);
             this.btnProductManagement.Name = "btnProductManagement";

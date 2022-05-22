@@ -62,6 +62,10 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             if (SearchResultProductList.CurrentLength == 0)
             {
                 lblResult.Text = "KẾT QUẢ: KHÔNG TÌM THẤY LÔ HÀNG THỎA ĐIỀU KIỆN TÌM KIẾM";
+            }
+            else
+            {
+                lblResult.Text = "KẾT QUẢ:";
             }    
         }
 
@@ -113,6 +117,10 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             {
                 lblResult.Text = "KẾT QUẢ: KHÔNG TÌM THẤY LÔ HÀNG THỎA ĐIỀU KIỆN TÌM KIẾM";
             }
+            else
+            {
+                lblResult.Text = "KẾT QUẢ:";
+            }
             FormIO.UpdateProductListToTable(SearchResultProductList, dgwProduct);
         }
 
@@ -122,6 +130,10 @@ namespace Product_Manage_Tool_WF.Forms.Child_Forms
             if (tempSearchList.CurrentLength == 0)
             {
                 lblResult.Text = "KẾT QUẢ: KHÔNG TÌM THẤY LÔ HÀNG THỎA ĐIỀU KIỆN TÌM KIẾM";
+            }
+            else
+            {
+                lblResult.Text = "KẾT QUẢ:";
             }
             FormIO.UpdateProductListToTable(tempSearchList, dgwProduct);
         }

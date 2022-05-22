@@ -188,7 +188,7 @@
             this.btnRefreshTypeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshTypeTable.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefreshTypeTable.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRefreshTypeTable.Image = global::Product_Manage_Tool_WF.Properties.Resources.icons8_synchronize_30;
+            this.btnRefreshTypeTable.Image = global::Product_Management_Tool_WF.Properties.Resources.icons8_synchronize_30;
             this.btnRefreshTypeTable.Location = new System.Drawing.Point(323, 3);
             this.btnRefreshTypeTable.Name = "btnRefreshTypeTable";
             this.btnRefreshTypeTable.Size = new System.Drawing.Size(36, 34);
