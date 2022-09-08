@@ -10,3 +10,10 @@ Chú ý:
 -	Làm với giao diện console hoặc windows form
 -	Các dữ liệu không cần lưu trữ lại
 -	File doc tự đánh giá
+
+| First Header  | Second Header | Second Header |
+| ------------- | ------------- | ------------- |
+| -	Thêm, xóa, sửa và tìm kiếm các mặt hàng (mã, tên hàng, hạn dùng, công ty sản xuất, năm sản xuất, loại hàng)  | Ghi rõ tính năng hoàn thành  |    |
+|    |    |    |
+|    |    |    |
+|    |    |    |
