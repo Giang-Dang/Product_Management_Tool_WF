@@ -1,4 +1,4 @@
-# Đồ án NMLT
+# Đồ án Nhập Môn Lập Trình - VB2 HCMUS
 
 DEADLINE: 6:00 PM, 20/05/2022
 
@@ -11,7 +11,7 @@ Chú ý:
 -	Các dữ liệu không cần lưu trữ lại
 -	File doc tự đánh giá
 
-| First Header  | Second Header | Second Header |
+| Tính năng | Hoàn thành | Chưa hoàn thành |
 | ------------- | ------------- | ------------- |
 | -	Thêm, xóa, sửa và tìm kiếm các mặt hàng (mã, tên hàng, hạn dùng, công ty sản xuất, năm sản xuất, loại hàng)  | Ghi rõ tính năng hoàn thành  |    |
 |    |    |    |
