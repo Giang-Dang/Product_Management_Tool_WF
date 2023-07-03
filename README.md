@@ -11,9 +11,8 @@ Chú ý:
 -	Các dữ liệu không cần lưu trữ lại
 -	File doc tự đánh giá
 
-| Tính năng | Hoàn thành | Chưa hoàn thành |
-| ------------- | ------------- | ------------- |
-| -	Thêm, xóa, sửa và tìm kiếm các mặt hàng (mã, tên hàng, hạn dùng, công ty sản xuất, năm sản xuất, loại hàng)  | Ghi rõ tính năng hoàn thành  |    |
-|    |    |    |
-|    |    |    |
-|    |    |    |
+| Tính năng | Hoàn thành |
+| ------------- | ------------- |
+| -Thêm, xóa, sửa và tìm kiếm các mặt hàng (mã, tên hàng, hạn dùng, công ty sản xuất, năm sản xuất, loại hàng) | -Thêm, xóa, sửa các trường trong mặt hàng (mã, tên hàng, hạn dùng, công ty sản xuất, năm sản xuất, mã loại hàng, loại hàng). -Tìm kiếm theo mã hàng |
+| -Thêm, xóa, sửa và tìm kiếm các loại hàng. | -Thêm, xóa, sửa các trường trong loại hàng (mã loại hàng, tên loại hàng) -Sửa các trường liên quan trong mặt hàng khi sửa loại hàng. -Xóa các mặt hàng có trong loại hàng bị xóa. -Tìm kiếm tên loại hàng theo mã hoặc ngược lại | 
+|    | -Tìm kiếm kết hợp giữa mã hàng, mã loại hàng và tên loại hàng.   | 
